@@ -1,0 +1,10 @@
+*.csv
+*.zip
+pavlovia/
+2020/
+2021/
+2022/
+2023/
+output/
+codebook/
+osfstorage-archive/

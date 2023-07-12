@@ -1,58 +1,13 @@
-mirrorReversal <- function(set, step = 2){
-  
-  if (set == 'su2020'){
-    datafilenames <- list.files('data/mReversalNewAlpha3-master/raw', pattern = '*.csv')
-  } else if (set == 'fa2020'){
-    datafilenames <- list.files('data/mirrorreversal-fall/raw', pattern = '*.csv')
-  }
-  
-  participant <- c()#create place holder
-  meanMT <- c()
-  sdMT <- c()
-  for(datafilenum in c(1:length(datafilenames))){
-    if (set == 'su2020'){
-      datafilename <- sprintf('data/mReversalNewAlpha3-master/raw/%s', datafilenames[datafilenum]) #change this, depending on location in directory
-    } else if (set == 'fa2020'){
-      datafilename <- sprintf('data/mirrorreversal-fall/raw/%s', datafilenames[datafilenum]) #change this, depending on location in directory
-    }
-    #cat(sprintf('file %d / %d     (%s)\n',datafilenum,length(datafilenames),datafilename))
-    dat <- handleOneMTFile(filename = datafilename, step = step)
-    
-    #then get only the last 40 trials of the mirror reversal (trials 71 to 110)
-    dat <- dat[which(dat$taskno == 2),]
-    dat <- tail(dat, n = 40)
-    
-    #get variables for participant, mean, SD of measure
-    ppname <- unique(dat$participant)
-    mean <- mean(dat$time)
-    stdev <- sd(dat$time)
-    
-    participant <- c(participant, ppname)
-    meanMT <- c(meanMT, mean)
-    sdMT <- c(sdMT, stdev)
-    
-  }
-  
-  dfmt <- data.frame(participant, meanMT, sdMT)
-  
-  #IMPORTANT: Summer data - These participants have mirror data but no qualtrics data:
-  # 215797, Tiffany, Victoria, Yue Hu
-  # dfmt <- dfmt[-which(dfmt$participant == '215797'),]
-  # dfmt <- dfmt[-which(dfmt$participant == 'Tiffany'),]
-  # dfmt <- dfmt[-which(dfmt$participant == 'Victoria'),]
-  # dfmt <- dfmt[-which(dfmt$participant == 'Yue Hu'),]
-  
-  return(dfmt)
-  
-}
+nlines <- c(133)
 
-
-handleOneMTFile <- function(filename, step) {
+# this function is adapted from Raphael's code and optimized by KK
+mirrorReversal <- function(filename) {
+  step <- 2
   
   # if the file can't be read, return empty list for now
-  df <- NULL
-  try(df <- read.csv(filename, stringsAsFactors = F), silent = TRUE)
-  if (is.null(df)) {
+  dt <- NULL
+  dt <- fread(filename)
+  if (is.null(dt)) {
     return(list())
   }
   
@@ -65,16 +20,18 @@ handleOneMTFile <- function(filename, step) {
   time <- c()
   
   # remove empty lines:
-  df <- df[which(!is.na(df$trialsNum)),]
+  dt <- dt[which(!is.na(dt$trialsNum)),]
   
   # loop through all trials
-  for (trialnum in c(1:dim(df)[1])) {
+  for (trialnum in c(1:dim(dt)[1])) {
     #print(trialnum)
-    s <- convertCellToNumVector(df$step[trialnum])
-    m <- df$trialsType[trialnum]
-    a <- df$targetangle_deg[trialnum]
-    p <- df$participant[trialnum]
-    t <- convertCellToNumVector(df$trialMouse.time[trialnum])
+    s <- convertCellToNumVector(dt$step[trialnum])
+    m <- dt$trialsType[trialnum]
+    a <- dt$targetangle_deg[trialnum]
+    p <- dt$participant[trialnum]
+    t <- convertCellToNumVector(dt$trialMouse.time[trialnum])
+    d <- dt$date[trialnum]
+    o <- dt$OS[trialnum]
     
     # remove stuff that is not step==2
     stepidx <- which(s == step)
@@ -88,16 +45,25 @@ handleOneMTFile <- function(filename, step) {
     trialno <- c(trialno, trialnum)
     targetangle_deg <- c(targetangle_deg, a)
     mirror <-c(mirror, m)
-    taskno <- c(taskno, df$trialsNum[trialnum])
-    participant <- c(participant, p)
+    taskno <- c(taskno, dt$trialsNum[trialnum])
     time <- c(time, mt)
   }
   
   # vectors as data frame columns:
-  dfmt <- data.frame(trialno, targetangle_deg, mirror, taskno, participant, time)
+  dtmt <- data.frame(trialno, targetangle_deg, mirror, taskno, time)
   
+  dtmt <- tail(subset(dtmt, taskno == 2), 40)
   
-  return(dfmt)
+  # create named output vector
+  output <- c()
+  output[['meanMT']] <- mean(dtmt$time)
+  output[['sdMT']] <- sd(dtmt$time)
+  
+  output[['participant']]     <- p
+  output[['OS']]              <- o
+  output[['date']] <- d
+  
+  return(output)
 }
 
 

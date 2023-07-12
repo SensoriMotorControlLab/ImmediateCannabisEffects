@@ -27,6 +27,22 @@ for (task in tasks) {
 }
 
 
+#### testing mirrorReversal ####
+
+tasks <- c("mirrorReversal")
+
+for (task in tasks) {
+  start_time <- system.time({
+    df <- getGroupPerformance("pavlovia", "2023-07", task)
+    assign(paste0(task, "_df"), df)
+  })
+  
+  # print the elapsed time
+  print(paste0("Elapsed time for task ", task, " was: ",  as.numeric(start_time["elapsed"]), " seconds"))
+}
+
+
+
 ##
 
 # list of data frames

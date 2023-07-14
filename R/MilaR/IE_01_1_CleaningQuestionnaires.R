@@ -4,65 +4,89 @@ library(lubridate)
 
 #### create data ####
 
-# q2 <- read.csv('data/2020/fall/questionnaire_2.csv', stringsAsFactors=F)
+# in each questionnaire downloaded from qualtrics remove 1st and 3rd line -- to keep only one line of column names
 
-q_full_1 <- read.csv('data/Canbyork-Fall2020-Part+#1-FINAL_February+24,+2023_15.58.csv', stringsAsFactors=F)
-q_full_2 <- read.csv('data/Canbyork-Fall2020-Part+#2-FINAL_February+24,+2023_15.58.csv', stringsAsFactors=F)
+q_full_1 <- read.csv('data/questionnaires/Canbyork-Fall2020-Part #1-FINAL_July 13, 2023_10.44.csv', stringsAsFactors=F)
+q_full_2 <- read.csv('data/questionnaires/Canbyork-Fall2020-Part #2-FINAL_July 13, 2023_10.45.csv', stringsAsFactors=F)
+
+# additional questionnaires (July 2023)
+
+q_1 <- read.csv('data/questionnaires/Canbyork-Fall2021-Part 1_July 13, 2023_10.45.csv', stringsAsFactors=F)
+q_2 <- read.csv('data/questionnaires/Canbyork-Fall2021-Part 2_July 13, 2023_10.47.csv', stringsAsFactors=F)
+q_3 <- read.csv('data/questionnaires/Canbyork-SU2021-Part #1_July 13, 2023_10.48.csv', stringsAsFactors=F)
+q_4 <- read.csv('data/questionnaires/Canbyork-SU2021-Part #2_July 13, 2023_10.50.csv', stringsAsFactors=F)
+q_5 <- read.csv('data/questionnaires/Canbyork-Winter2022-Part 1_July 13, 2023_10.51.csv', stringsAsFactors=F)
+q_6 <- read.csv('data/questionnaires/Canbyork-Winter2022-Part 2_July 13, 2023_10.52.csv', stringsAsFactors=F)
 
 # reading questionnaire
-q_ie_part1_fall <- read.csv('data/Immediate+Cannabis+Effects-+Fall21-Part+1_November+2,+2022_19.36.csv', stringsAsFactors=F)
-q_ie_part2_fall <- read.csv('data/Immediate+Cannabis+Effects-+Fall21-Part+2_November+2,+2022_19.40.csv', stringsAsFactors=F)
-q_ie_part1_winter <- read.csv('data/Immediate+Cannabis+Effects-+Winter22-Part+1_November+2,+2022_19.48.csv', stringsAsFactors=F)
-q_ie_part2_winter <- read.csv('data/Immediate+Cannabis+Effects-+Winter22-Part+2_November+2,+2022_19.50.csv', stringsAsFactors=F)
+q_ie_part1_fall <- read.csv('data/questionnaires/Immediate Cannabis Effects- Fall21-Part 1_July 13, 2023_10.59.csv', stringsAsFactors=F)
+q_ie_part2_fall <- read.csv('data/questionnaires/Immediate Cannabis Effects- Fall21-Part 2_July 13, 2023_11.00.csv', stringsAsFactors=F)
+q_ie_part1_winter <- read.csv('data/questionnaires/Immediate Cannabis Effects- Winter22-Part 1_July 13, 2023_12.08.csv', stringsAsFactors=F)
+q_ie_part2_winter <- read.csv('data/questionnaires/Immediate Cannabis Effects- Winter22-Part 2_July 13, 2023_12.10.csv', stringsAsFactors=F)
 
 # part 3 and 4
-q_ie_part3_fall <- read.csv('data/Immediate+Cannabis+Effects-+Part+3_November+2,+2022_19.43.csv', stringsAsFactors=F)
-q_ie_part4_fall <- read.csv('data/Immediate+Cannabis+Effects-+Part+4_November+2,+2022_19.46.csv', stringsAsFactors=F)
-q_ie_part3_winter <- read.csv('data/Immediate+Cannabis+Effects-+Winter22-Part+3_November+2,+2022_19.53.csv', stringsAsFactors=F)
-q_ie_part4_winter <- read.csv('data/Immediate+Cannabis+Effects-+Winter22-Part+4_November+2,+2022_19.56.csv', stringsAsFactors=F)
+q_ie_part3_fall <- read.csv('data/questionnaires/Immediate Cannabis Effects- Part 3_July 13, 2023_11.01.csv', stringsAsFactors=F)
+q_ie_part4_fall <- read.csv('data/questionnaires/Immediate Cannabis Effects- Part 4_July 13, 2023_12.07.csv', stringsAsFactors=F)
+q_ie_part3_winter <- read.csv('data/questionnaires/Immediate Cannabis Effects- Winter22-Part 3_July 13, 2023_12.11.csv', stringsAsFactors=F)
+q_ie_part4_winter <- read.csv('data/questionnaires/Immediate Cannabis Effects- Winter22-Part 4_July 13, 2023_12.11.csv', stringsAsFactors=F)
+
+# additional ie (July 2023)
+
+q_ie_part1_summer <- read.csv('data/questionnaires/Immediate Cannabis Effects - Summer 23 - Part 1_July 13, 2023_10.55.csv', stringsAsFactors=F)
+q_ie_part2_summer <- read.csv('data/questionnaires/Immediate Cannabis Effects - Summer23 - Part 2_July 13, 2023_10.56.csv', stringsAsFactors=F)
+q_ie_part3_summer <- read.csv('data/questionnaires/Immediate Cannabis Effects - Summer23 - Part 3_July 13, 2023_10.57.csv', stringsAsFactors=F)
+q_ie_part4_summer <- read.csv('data/questionnaires/Immediate Cannabis Effects - Summer23 - Part 4_July 13, 2023_10.58.csv', stringsAsFactors=F)
 
 
 #### create codebooks ####
 
 # list of data frames
-#df_list_q <- list(q_2020_fall,
-#                q_2020_summer,
-#                q_ie_part1_fall,
-#                q_ie_part2_fall,
-#                q_ie_part1_winter,
-#                q_ie_part2_winter,
-#                q_ie_part3_fall,
-#                q_ie_part4_fall,
-#                q_ie_part3_winter,
-#                q_ie_part4_winter,
-#                q_full_1,
-#                q_full_2)
+df_list_q <- list(q_ie_part1_fall,
+                q_ie_part2_fall,
+                q_ie_part1_winter,
+                q_ie_part2_winter,
+                q_ie_part3_fall,
+                q_ie_part4_fall,
+                q_ie_part3_winter,
+                q_ie_part4_winter,
+                q_full_1,
+                q_full_2,
+                q_1, q_2, q_3,
+                q_4, q_5, q_6,
+                q_ie_part1_summer,
+                q_ie_part2_summer,
+                q_ie_part3_summer,
+                q_ie_part4_summer)
 
-#df_names <- c("q_2020_fall",
-#             "q_2020_summer",
-#             "q_ie_part1_fall",
-#             "q_ie_part2_fall",
-#             "q_ie_part1_winter",
-#             "q_ie_part2_winter",
-#             "q_ie_part3_fall",
-#             "q_ie_part4_fall",
-#             "q_ie_part3_winter",
-#             "q_ie_part4_winter",
-#             "q_full_1",
-#             "q_full_2")
+df_names <- c("q_ie_part1_fall",
+             "q_ie_part2_fall",
+             "q_ie_part1_winter",
+             "q_ie_part2_winter",
+             "q_ie_part3_fall",
+             "q_ie_part4_fall",
+             "q_ie_part3_winter",
+             "q_ie_part4_winter",
+             "q_full_1",
+             "q_full_2",
+             "q_1", "q_2", "q_3",
+             "q_4", "q_5", "q_6",
+             "q_ie_part1_summer",
+             "q_ie_part2_summer",
+             "q_ie_part3_summer",
+             "q_ie_part4_summer")
 
 # iterate over data frames
-#for (i in seq_along(df_list_q)) {
+for (i in seq_along(df_list_q)) {
 # create data frame with column names, numbers, and values
-#  col_info <- data.frame(
-#    num = 1:ncol(df_list_q[[i]]),
-#    name = names(df_list_q[[i]]),
-#    values = sapply(df_list_q[[i]], function(x) paste(unique(x), collapse = ", "))
-#  )
+  col_info <- data.frame(
+    num = 1:ncol(df_list_q[[i]]),
+    name = names(df_list_q[[i]]),
+    values = sapply(df_list_q[[i]], function(x) paste(unique(x), collapse = ", "))
+  )
 
 # write to csv file
-#  write.csv(col_info, file.path("data", "codebook", paste0(df_names[i], "_codebook.csv")), row.names = FALSE)
-#}
+  write.csv(col_info, file.path("data", "codebook", paste0(df_names[i], "_codebook.csv")), row.names = FALSE)
+}
 
 #### change the dates ####
 
@@ -98,7 +122,36 @@ q_ie_part4_fall$startdate <- as.POSIXct(q_ie_part4_fall$Start.Date, format = "%Y
 q_ie_part3_winter$startdate <- as.POSIXct(q_ie_part3_winter$Start.Date, format = "%Y-%m-%d %H:%M")
 q_ie_part4_winter$startdate <- as.POSIXct(q_ie_part4_winter$Start.Date, format = "%Y-%m-%d %H:%M")
 
+# additional ones (July 2023)
+q_1$enddate <- as.POSIXct(q_1$End.Date, format = "%Y-%m-%d %H:%M")
+q_1$startdate <- as.POSIXct(q_1$Start.Date, format = "%Y-%m-%d %H:%M")
 
+q_2$enddate <- as.POSIXct(q_2$End.Date, format = "%Y-%m-%d %H:%M")
+q_2$startdate <- as.POSIXct(q_2$Start.Date, format = "%Y-%m-%d %H:%M")
+
+q_3$enddate <- as.POSIXct(q_3$End.Date, format = "%Y-%m-%d %H:%M")
+q_3$startdate <- as.POSIXct(q_3$Start.Date, format = "%Y-%m-%d %H:%M")
+
+q_4$enddate <- as.POSIXct(q_4$End.Date, format = "%Y-%m-%d %H:%M")
+q_4$startdate <- as.POSIXct(q_4$Start.Date, format = "%Y-%m-%d %H:%M")
+
+q_5$enddate <- as.POSIXct(q_5$End.Date, format = "%Y-%m-%d %H:%M")
+q_5$startdate <- as.POSIXct(q_5$Start.Date, format = "%Y-%m-%d %H:%M")
+
+q_6$enddate <- as.POSIXct(q_6$End.Date, format = "%Y-%m-%d %H:%M")
+q_6$startdate <- as.POSIXct(q_6$Start.Date, format = "%Y-%m-%d %H:%M")
+
+q_ie_part1_summer$enddate <- as.POSIXct(q_ie_part1_summer$End.Date, format = "%Y-%m-%d %H:%M")
+q_ie_part1_summer$startdate <- as.POSIXct(q_ie_part1_summer$Start.Date, format = "%Y-%m-%d %H:%M")
+
+q_ie_part2_summer$enddate <- as.POSIXct(q_ie_part2_summer$End.Date, format = "%Y-%m-%d %H:%M")
+q_ie_part2_summer$startdate <- as.POSIXct(q_ie_part2_summer$Start.Date, format = "%Y-%m-%d %H:%M")
+
+q_ie_part3_summer$enddate <- as.POSIXct(q_ie_part3_summer$End.Date, format = "%Y-%m-%d %H:%M")
+q_ie_part3_summer$startdate <- as.POSIXct(q_ie_part3_summer$Start.Date, format = "%Y-%m-%d %H:%M")
+
+q_ie_part4_summer$enddate <- as.POSIXct(q_ie_part4_summer$End.Date, format = "%Y-%m-%d %H:%M")
+q_ie_part4_summer$startdate <- as.POSIXct(q_ie_part4_summer$Start.Date, format = "%Y-%m-%d %H:%M")
 
 #q_full_1$date_date <- as.Date(q_full_1$date)
 #q_full_2$date_date <- as.Date(q_full_2$date)
@@ -642,6 +695,548 @@ q_ie_part4_winter$id <- as.character(q_ie_part4_winter$id)
 
 q_ie_part4_winter$sample <- "experimental"
 
+## additional questionnaires (July 2023)
+
+#### q_1 ####
+
+names(q_1)[18] <- "Informed.Consent"
+
+columns <- c("id",
+             "startdate",
+             "enddate",
+             "Finished",
+             "Informed.Consent",
+             "What.is.your.age.....Please.enter.a.valid.number..without.spaces.and.or.special.characters.",
+             "What.sex.were.you.assigned.at.birth.",
+             "Which.of.the.following.best.describes.your.ancestry..select.all.that.apply....Selected.Choice",
+             "Which.of.the.following.best.describes.your.ancestry..select.all.that.apply....Other...Text",
+             "What.best.describes.your.highest.level.of.education.",
+             "Are.you.currently.suffering.from.a.neurological.condition....Selected.Choice",
+             "Are.you.currently.suffering.from.a.neurological.condition....Yes..Please.specify.if.comfortable...Text",
+             "What.is.your.handedness.",
+             "Do.you.need.to.wear.any.corrective.devices..e.g..glasses..contact.lenses..to.see.the.screen.",
+             "Are.you.wearing.your.corrective.devices.right.now.OR.able.to.see.the.screen.well.enough.to.participate.",
+             "On.a.scale.of.1.7..how.fit.physically.active.do.you.consider.yourself...1.not.physically.active.at.all.and.7.extremely.fit.",
+             "On.a.scale.of.1.7..how.stressed.have.you.been.feeling.this.week...1.not.stressed.at.all..7.extremely.stressed.",
+             "Do.you.use.opiates..or.other.recreational.drugs..besides.marijuana.or.alcohol...recreationally.",
+             "Do.you.play.video.games.",
+             "Have.you.ever.used.marijuana..e.g..weed..joint..hash..oil.etc..",
+             "How.often.do.you.use.Marijuana..on.average.within.the.past.3.months..",
+             "When.was.the.last.time.you.used.marijuana.",
+             "How.many.hours.of.sleep.did.you.get.last.night.",
+             "Have.you.ever.experienced.a.concussion.before.",
+             "Do.you.play.a.musical.instrument.",
+             "Were.there.any.problems.that.made.it.difficult.for.you.to.complete.this.study...i.e..in.pain..sick..sleepy..or.on.medication.that.may.impair.performance..aside.from.cannabis...Note..You.will.still.get.your.credit.payment.if.you.answer.yes.")
+
+# keeping only the columns that will be used
+q_1 <- q_1[columns]
+
+names(q_1) <- c("id",
+                            "startdate",
+                            "enddate",
+                            "finished",
+                            "informed_consent",
+                            "age",
+                            "sex",
+                            "ancestry",
+                            "ancestry_other",
+                            "education",
+                            "neurological_conditions",
+                            "neurological_condition_description",
+                            "handedness",
+                            "glasses_contacts",
+                            "wearing_glasses_now",
+                            "physically_activity",
+                            "stressed",
+                            "opiates",
+                            "video_games",
+                            "used",
+                            "use_frequency",
+                            "use_last",
+                            "sleep_last",
+                            "concussion",
+                            "music",
+                            "problems")
+
+q_1$id <- as.character(q_1$id)
+
+q_1$sample <- "control"
+
+#### q_2 ####
+
+names(q_2)[18] <- "Informed.Consent"
+
+columns <- c("id",
+             "startdate",
+             "enddate",
+             "Finished",
+             "Informed.Consent",
+             "Do.you.need.to.wear.any.corrective.devices..e.g..glasses..contact.lenses..to.see.the.screen.",
+             "Are.you.wearing.your.corrective.devices.right.now.OR.able.to.see.the.screen.well.enough.to.participate.",
+             "On.a.scale.of.1.7..how.stressed.have.you.been.feeling.this.week...1.not.stressed.at.all..7.extremely.stressed.",
+             "Do.you.use.opiates..or.other.recreational.drugs..besides.marijuana.or.alcohol...recreationally.",
+             "Have.you.ever.used.marijuana..e.g..weed..joint..hash..oil.etc..",
+             "How.often.do.you.use.Marijuana..on.average.within.the.past.3.months..",
+             "When.was.the.last.time.you.used.marijuana.",
+             "How.many.hours.of.sleep.did.you.get.last.night.",
+             "Have.you.ever.experienced.a.concussion.before.",
+             "Were.there.any.problems.that.made.it.difficult.for.you.to.complete.this.study...i.e..in.pain..sick..sleepy..or.on.medication.that.may.impair.performance..aside.from.cannabis...Note..You.will.still.get.your.credit.payment.if.you.answer.yes.")
+
+# keeping only the columns that will be used
+q_2 <- q_2[columns]
+
+names(q_2) <- c("id",
+                            "startdate",
+                            "enddate",
+                            "finished",
+                            "informed_consent",
+                            "glasses_contacts",
+                            "wearing_glasses_now",
+                            "stressed",
+                            "opiates",
+                            "used",
+                            "use_frequency",
+                            "use_last",
+                            "sleep_last",
+                            "concussion",
+                            "problems")
+
+q_2$id <- as.character(q_2$id)
+
+q_2$sample <- "control"
+
+#### q_3 ####
+
+names(q_3)[18] <- "Informed.Consent"
+
+columns <- c("id",
+             "startdate",
+             "enddate",
+             "Finished",
+             "Informed.Consent",
+             "What.is.your.age.....Please.enter.a.valid.number..without.spaces.and.or.special.characters.",
+             "What.sex.were.you.assigned.at.birth.",
+             "Which.of.the.following.best.describes.your.ancestry..select.all.that.apply....Selected.Choice",
+             "Which.of.the.following.best.describes.your.ancestry..select.all.that.apply....Other...Text",
+             "What.best.describes.your.highest.level.of.education.",
+             "Are.you.currently.suffering.from.a.neurological.condition....Selected.Choice",
+             "Are.you.currently.suffering.from.a.neurological.condition....Yes..Please.specify.if.comfortable...Text",
+             "What.is.your.handedness.",
+             "Do.you.need.to.wear.any.corrective.devices..e.g..glasses..contact.lenses..to.see.the.screen.",
+             "Are.you.wearing.your.corrective.devices.right.now.OR.able.to.see.the.screen.well.enough.to.participate.",
+             "On.a.scale.of.1.7..how.fit.physically.active.do.you.consider.yourself...1.not.physically.active.at.all.and.7.extremely.fit.",
+             "On.a.scale.of.1.7..how.stressed.have.you.been.feeling.this.week...1.not.stressed.at.all..7.extremely.stressed.",
+             "Do.you.use.opiates..or.other.recreational.drugs..besides.marijuana.or.alcohol...recreationally.",
+             "Do.you.play.video.games.",
+             "Have.you.ever.used.marijuana..e.g..weed..joint..hash..oil.etc..",
+             "How.often.do.you.use.Marijuana..on.average.within.the.past.3.months..",
+             "When.was.the.last.time.you.used.marijuana.",
+             "How.many.hours.of.sleep.did.you.get.last.night.",
+             "Have.you.ever.experienced.a.concussion.before.",
+             "Do.you.play.a.musical.instrument.",
+             "Were.there.any.problems.that.made.it.difficult.for.you.to.complete.this.study...i.e..in.pain..sick..sleepy..or.on.medication.that.may.impair.performance..aside.from.cannabis...Note..You.will.still.get.your.credit.payment.if.you.answer.yes.")
+
+# keeping only the columns that will be used
+q_3 <- q_3[columns]
+
+names(q_3) <- c("id",
+                "startdate",
+                "enddate",
+                "finished",
+                "informed_consent",
+                "age",
+                "sex",
+                "ancestry",
+                "ancestry_other",
+                "education",
+                "neurological_conditions",
+                "neurological_condition_description",
+                "handedness",
+                "glasses_contacts",
+                "wearing_glasses_now",
+                "physically_activity",
+                "stressed",
+                "opiates",
+                "video_games",
+                "used",
+                "use_frequency",
+                "use_last",
+                "sleep_last",
+                "concussion",
+                "music",
+                "problems")
+
+q_3$id <- as.character(q_3$id)
+
+q_3$sample <- "control"
+
+#### q_4 ####
+
+names(q_4)[18] <- "Informed.Consent"
+
+columns <- c("id",
+             "startdate",
+             "enddate",
+             "Finished",
+             "Informed.Consent",
+             "Do.you.need.to.wear.any.corrective.devices..e.g..glasses..contact.lenses..to.see.the.screen.",
+             "Are.you.wearing.your.corrective.devices.right.now.OR.able.to.see.the.screen.well.enough.to.participate.",
+             "On.a.scale.of.1.7..how.stressed.have.you.been.feeling.this.week...1.not.stressed.at.all..7.extremely.stressed.",
+             "Do.you.use.opiates..or.other.recreational.drugs..besides.marijuana.or.alcohol...recreationally.",
+             "Have.you.ever.used.marijuana..e.g..weed..joint..hash..oil.etc..",
+             "How.often.do.you.use.Marijuana..on.average.within.the.past.3.months..",
+             "When.was.the.last.time.you.used.marijuana.",
+             "How.many.hours.of.sleep.did.you.get.last.night.....Please.enter.a.valid.number..without.spaces.and.or.special.characters.",
+             "Have.you.ever.experienced.a.concussion.before.",
+             "Were.there.any.problems.that.made.it.difficult.for.you.to.complete.this.study...i.e..in.pain..sick..sleepy..or.on.medication.that.may.impair.performance..aside.from.cannabis...Note..You.will.still.get.your.credit.payment.if.you.answer.yes.")
+
+# keeping only the columns that will be used
+q_4 <- q_4[columns]
+
+names(q_4) <- c("id",
+                "startdate",
+                "enddate",
+                "finished",
+                "informed_consent",
+                "glasses_contacts",
+                "wearing_glasses_now",
+                "stressed",
+                "opiates",
+                "used",
+                "use_frequency",
+                "use_last",
+                "sleep_last",
+                "concussion",
+                "problems")
+
+q_4$id <- as.character(q_4$id)
+
+q_4$sample <- "control"
+
+#### q_5 ####
+
+names(q_5)[18] <- "Informed.Consent"
+
+columns <- c("id",
+             "startdate",
+             "enddate",
+             "Finished",
+             "Informed.Consent",
+             "What.is.your.age.....Please.enter.a.valid.number..without.spaces.and.or.special.characters.",
+             "What.sex.were.you.assigned.at.birth.",
+             "Which.of.the.following.best.describes.your.ancestry..select.all.that.apply....Selected.Choice",
+             "Which.of.the.following.best.describes.your.ancestry..select.all.that.apply....Other...Text",
+             "What.best.describes.your.highest.level.of.education.",
+             "Are.you.currently.suffering.from.a.neurological.condition.",
+             "Which.of.the.following.neurological.conditions.are.you.currently.suffering.from...Please.select.all.that.apply....Selected.Choice",
+             "Which.of.the.following.neurological.conditions.are.you.currently.suffering.from...Please.select.all.that.apply....Other..please.specify.if.comfortable....Text",
+             "What.is.your.handedness.",
+             "Do.you.need.to.wear.any.corrective.devices..e.g..glasses..contact.lenses..to.see.the.screen.",
+             "Are.you.wearing.your.corrective.devices.right.now.OR.able.to.see.the.screen.well.enough.to.participate.",
+             "On.a.scale.of.1.7..how.fit.physically.active.do.you.consider.yourself...1.not.physically.active.at.all.and.7.extremely.fit.",
+             "On.a.scale.of.1.7..how.stressed.have.you.been.feeling.this.week...1.not.stressed.at.all..7.extremely.stressed.",
+             "Do.you.use.opiates..or.other.recreational.drugs..besides.marijuana.or.alcohol...recreationally.",
+             "Do.you.play.video.games.",
+             "Have.you.ever.used.marijuana..e.g..weed..joint..hash..oil.etc..",
+             "How.often.do.you.use.Marijuana..on.average.within.the.past.3.months..",
+             "When.was.the.last.time.you.used.marijuana.",
+             "SleepDuration",
+             "Have.you.ever.experienced.a.concussion.before.",
+             "Do.you.play.a.musical.instrument.",
+             "Were.there.any.problems.that.made.it.difficult.for.you.to.complete.this.study...i.e..in.pain..sick..sleepy..or.on.medication.that.may.impair.performance..aside.from.cannabis...Note..You.will.still.get.your.credit.payment.if.you.answer.yes.")
+
+# keeping only the columns that will be used
+q_5 <- q_5[columns]
+
+names(q_5) <- c("id",
+                "startdate",
+                "enddate",
+                "finished",
+                "informed_consent",
+                "age",
+                "sex",
+                "ancestry",
+                "ancestry_other",
+                "education",
+                "neurological_conditions",
+                "neurological_condition_choice",
+                "neurological_condition_description",
+                "handedness",
+                "glasses_contacts",
+                "wearing_glasses_now",
+                "physically_activity",
+                "stressed",
+                "opiates",
+                "video_games",
+                "used",
+                "use_frequency",
+                "use_last",
+                "sleep_last",
+                "concussion",
+                "music",
+                "problems")
+
+q_5$id <- as.character(q_5$id)
+
+q_5$sample <- "control"
+
+#### q_6 ####
+
+names(q_6)[18] <- "Informed.Consent"
+
+columns <- c("id",
+             "startdate",
+             "enddate",
+             "Finished",
+             "Informed.Consent",
+             "Do.you.need.to.wear.any.corrective.devices..e.g..glasses..contact.lenses..to.see.the.screen.",
+             "Are.you.wearing.your.corrective.devices.right.now.OR.able.to.see.the.screen.well.enough.to.participate.",
+             "On.a.scale.of.1.7..how.stressed.have.you.been.feeling.this.week...1.not.stressed.at.all..7.extremely.stressed.",
+             "Do.you.use.opiates..or.other.recreational.drugs..besides.marijuana.or.alcohol...recreationally.",
+             "Have.you.ever.used.marijuana..e.g..weed..joint..hash..oil.etc..",
+             "How.often.do.you.use.Marijuana..on.average.within.the.past.3.months..",
+             "When.was.the.last.time.you.used.marijuana.",
+             "SleepDuration",
+             "Have.you.ever.experienced.a.concussion.before.",
+             "Were.there.any.problems.that.made.it.difficult.for.you.to.complete.this.study...i.e..in.pain..sick..sleepy..or.on.medication.that.may.impair.performance..aside.from.cannabis...Note..You.will.still.get.your.credit.payment.if.you.answer.yes.")
+
+# keeping only the columns that will be used
+q_6 <- q_6[columns]
+
+names(q_6) <- c("id",
+                "startdate",
+                "enddate",
+                "finished",
+                "informed_consent",
+                "glasses_contacts",
+                "wearing_glasses_now",
+                "stressed",
+                "opiates",
+                "used",
+                "use_frequency",
+                "use_last",
+                "sleep_last",
+                "concussion",
+                "problems")
+
+q_6$id <- as.character(q_6$id)
+
+q_6$sample <- "control"
+
+#### q_ie_part1_summer ####
+
+names(q_ie_part1_summer)[123] <- "Informed.Consent"
+
+columns <- c("id",
+             "startdate",
+             "enddate",
+             "Finished",
+             "Informed.Consent",
+             "What.is.your.age.....Please.enter.a.valid.number..without.spaces.and.or.special.characters.",
+             "What.sex.were.you.assigned.at.birth.",
+             "Which.of.the.following.best.describes.your.ancestry..select.all.that.apply....Selected.Choice",
+             "Which.of.the.following.best.describes.your.ancestry..select.all.that.apply....Other...Text",
+             "What.is.your.highest.level.of.education.",
+             "Are.you.currently.suffering.from.a.neurological.condition.",
+             "Which.of.the.following.neurological.conditions.are.you.currently.suffering.from...Please.select.all.that.apply....Selected.Choice",
+             "Which.of.the.following.neurological.conditions.are.you.currently.suffering.from...Please.select.all.that.apply....Other..please.specify.if.comfortable....Text",
+             "What.is.your.handedness.",
+             "Do.you.need.to.wear.any.corrective.devices..e.g..glasses..contact.lenses..to.see.the.screen.",
+             "Are.you.wearing.your.corrective.devices.right.now.OR.able.to.see.the.screen.well.enough.to.participate.",
+             "On.a.scale.of.1.7..how.stressed.have.you.been.feeling.this.week...1.not.stressed.at.all..7.extremely.stressed.",
+             "Do.you.use.opiates..or.other.recreational.drugs..besides.marijuana.or.alcohol...recreationally.",
+             "Have.you.ever.used.marijuana..e.g..weed..joint..hash..oil.etc..",
+             "How.often.do.you.use.Marijuana..on.average.within.the.past.3.months..",
+             "When.was.the.last.time.you.used.marijuana.",
+             "SleepDuration",
+             "Have.you.ever.experienced.a.concussion.before.",
+             "Were.there.any.problems.that.made.it.difficult.for.you.to.complete.this.study...i.e..in.pain..sick..sleepy..or.on.medication.that.may.impair.performance..aside.from.cannabis...Note..You.will.still.get.your.credit.payment.if.you.answer.yes.")
+
+# keeping only the columns that will be used
+q_ie_part1_summer <- q_ie_part1_summer[columns]
+
+names(q_ie_part1_summer) <- c("id",
+                            "startdate",
+                            "enddate",
+                            "finished",
+                            "informed_consent",
+                            "age",
+                            "sex",
+                            "ancestry",
+                            "ancestry_other",
+                            "education",
+                            "neurological_conditions",
+                            "neurological_condition_choice",
+                            "neurological_condition_description",
+                            "handedness",
+                            "glasses_contacts",
+                            "wearing_glasses_now",
+                            "stressed",
+                            "opiates",
+                            "used",
+                            "use_frequency",
+                            "use_last",
+                            "sleep_last",
+                            "concussion",
+                            "problems")
+
+q_ie_part1_summer$id <- as.character(q_ie_part1_summer$id)
+
+q_ie_part1_summer$sample <- "experimental"
+
+#### q_ie_part2_summer ####
+
+names(q_ie_part2_summer)[105] <- "Informed.Consent"
+
+columns <- c("id",
+             "startdate",
+             "enddate",
+             "Finished",
+             "Informed.Consent",
+             "Are.you.currently.suffering.from.a.neurological.condition.",
+             "Which.of.the.following.neurological.conditions.are.you.currently.suffering.from...Please.select.all.that.apply....Selected.Choice",
+             "Which.of.the.following.neurological.conditions.are.you.currently.suffering.from...Please.select.all.that.apply....Other..please.specify.if.comfortable....Text",
+             "Do.you.need.to.wear.any.corrective.devices..e.g..glasses..contact.lenses..to.see.the.screen.",
+             "Are.you.wearing.your.corrective.devices.right.now.OR.able.to.see.the.screen.well.enough.to.participate.",
+             "On.a.scale.of.1.7..how.stressed.have.you.been.feeling.this.week...1.not.stressed.at.all..7.extremely.stressed.",
+             "Do.you.use.opiates..or.other.recreational.drugs..besides.marijuana.or.alcohol...recreationally.",
+             "Have.you.ever.used.marijuana..e.g..weed..joint..hash..oil.etc..",
+             "How.often.do.you.use.Marijuana..on.average.within.the.past.3.months..",
+             "When.was.the.last.time.you.used.marijuana.",
+             "SleepDuration",
+             "Have.you.ever.experienced.a.concussion.before.",
+             "Were.there.any.problems.that.made.it.difficult.for.you.to.complete.this.study...i.e..in.pain..sick..sleepy..or.on.medication.that.may.impair.performance..aside.from.cannabis...Note..You.will.still.get.your.credit.payment.if.you.answer.yes.")
+
+# keeping only the columns that will be used
+q_ie_part2_summer <- q_ie_part2_summer[columns]
+
+names(q_ie_part2_summer) <- c("id",
+                              "startdate",
+                              "enddate",
+                              "finished",
+                              "informed_consent",
+                              "neurological_conditions",
+                              "neurological_condition_choice",
+                              "neurological_condition_description",
+                              "glasses_contacts",
+                              "wearing_glasses_now",
+                              "stressed",
+                              "opiates",
+                              "used",
+                              "use_frequency",
+                              "use_last",
+                              "sleep_last",
+                              "concussion",
+                              "problems")
+
+q_ie_part2_summer$id <- as.character(q_ie_part2_summer$id)
+
+q_ie_part2_summer$sample <- "experimental"
+
+#### q_ie_part3_summer ####
+
+names(q_ie_part3_summer)[18] <- "Informed.Consent"
+
+columns <- c("id",
+             "startdate",
+             "enddate",
+             "Finished",
+             "Informed.Consent",
+             "Are.you.currently.suffering.from.a.neurological.condition.",
+             "Which.of.the.following.neurological.conditions.are.you.currently.suffering.from...Please.select.all.that.apply....Selected.Choice",
+             "Which.of.the.following.neurological.conditions.are.you.currently.suffering.from...Please.select.all.that.apply....Other..please.specify.if.comfortable....Text",
+             "Do.you.need.to.wear.any.corrective.devices..e.g..glasses..contact.lenses..to.see.the.screen.",
+             "Are.you.wearing.your.corrective.devices.right.now.OR.able.to.see.the.screen.well.enough.to.participate.",
+             "On.a.scale.of.1.7..how.fit.physically.active.do.you.consider.yourself...1.not.physically.active.at.all.and.7.extremely.fit.",
+             "On.a.scale.of.1.7..how.stressed.have.you.been.feeling.this.week...1.not.stressed.at.all..7.extremely.stressed.",
+             "Do.you.use.opiates..or.other.recreational.drugs..besides.marijuana.or.alcohol...recreationally.",
+             "Do.you.play.video.games.",
+             "Have.you.ever.used.marijuana..e.g..weed..joint..hash..oil.etc..",
+             "How.often.do.you.use.Marijuana..on.average.within.the.past.3.months..",
+             "When.was.the.last.time.you.used.marijuana.",
+             "SleepDuration",
+             "Have.you.ever.experienced.a.concussion.before.",
+             "Do.you.play.a.musical.instrument.",
+             "Were.there.any.problems.that.made.it.difficult.for.you.to.complete.this.study...i.e..in.pain..sick..sleepy..or.on.medication.that.may.impair.performance..aside.from.cannabis...Note..You.will.still.get.your.credit.payment.if.you.answer.yes.")
+
+# keeping only the columns that will be used
+q_ie_part3_summer <- q_ie_part3_summer[columns]
+
+names(q_ie_part3_summer) <- c("id",
+                              "startdate",
+                              "enddate",
+                              "finished",
+                              "informed_consent",
+                              "neurological_conditions",
+                              "neurological_condition_choice",
+                              "neurological_condition_description",
+                              "glasses_contacts",
+                              "wearing_glasses_now",
+                              "physically_activity",
+                              "stressed",
+                              "opiates",
+                              "video_games",
+                              "used",
+                              "use_frequency",
+                              "use_last",
+                              "sleep_last",
+                              "concussion",
+                              "music",
+                              "problems")
+
+q_ie_part3_summer$id <- as.character(q_ie_part3_summer$id)
+
+q_ie_part3_summer$sample <- "control"
+
+#### q_ie_part4_summer ####
+
+names(q_ie_part4_summer)[18] <- "Informed.Consent"
+
+columns <- c("id",
+             "startdate",
+             "enddate",
+             "Finished",
+             "Informed.Consent",
+             "Are.you.currently.suffering.from.a.neurological.condition.",
+             "Which.of.the.following.neurological.conditions.are.you.currently.suffering.from...Please.select.all.that.apply....Selected.Choice",
+             "Which.of.the.following.neurological.conditions.are.you.currently.suffering.from...Please.select.all.that.apply....Other..please.specify.if.comfortable....Text",
+             "Do.you.need.to.wear.any.corrective.devices..e.g..glasses..contact.lenses..to.see.the.screen.",
+             "Are.you.wearing.your.corrective.devices.right.now.OR.able.to.see.the.screen.well.enough.to.participate.",
+             "On.a.scale.of.1.7..how.stressed.have.you.been.feeling.this.week...1.not.stressed.at.all..7.extremely.stressed.",
+             "Do.you.use.opiates..or.other.recreational.drugs..besides.marijuana.or.alcohol...recreationally.",
+             "Have.you.ever.used.marijuana..e.g..weed..joint..hash..oil.etc..",
+             "How.often.do.you.use.Marijuana..on.average.within.the.past.3.months..",
+             "When.was.the.last.time.you.used.marijuana.",
+             "SleepDuration",
+             "Have.you.ever.experienced.a.concussion.before.",
+             "Were.there.any.problems.that.made.it.difficult.for.you.to.complete.this.study...i.e..in.pain..sick..sleepy..or.on.medication.that.may.impair.performance..aside.from.cannabis...Note..You.will.still.get.your.credit.payment.if.you.answer.yes.")
+
+# keeping only the columns that will be used
+q_ie_part4_summer <- q_ie_part4_summer[columns]
+
+names(q_ie_part4_summer) <- c("id",
+                              "startdate",
+                              "enddate",
+                              "finished",
+                              "informed_consent",
+                              "neurological_conditions",
+                              "neurological_condition_choice",
+                              "neurological_condition_description",
+                              "glasses_contacts",
+                              "wearing_glasses_now",
+                              "stressed",
+                              "opiates",
+                              "used",
+                              "use_frequency",
+                              "use_last",
+                              "sleep_last",
+                              "concussion",
+                              "problems")
+
+q_ie_part4_summer$id <- as.character(q_ie_part4_summer$id)
+
+q_ie_part4_summer$sample <- "control"
+
 #### combine all questionnaires into one ####
 
 df_combined <- bind_rows(q_full_1, q_full_2)
@@ -655,6 +1250,23 @@ df_combined <- bind_rows(df_combined, q_ie_part3_fall)
 df_combined <- bind_rows(df_combined, q_ie_part3_winter)
 df_combined <- bind_rows(df_combined, q_ie_part4_fall)
 df_combined <- bind_rows(df_combined, q_ie_part4_winter)
+
+## additional (July 2023)
+df_combined <- bind_rows(df_combined, q_1)
+df_combined <- bind_rows(df_combined, q_2)
+df_combined <- bind_rows(df_combined, q_3)
+df_combined <- bind_rows(df_combined, q_4)
+
+# sleep_last changes, so we need to change it to character, just in case
+df_combined$sleep_last <- as.character(df_combined$sleep_last)
+
+df_combined <- bind_rows(df_combined, q_5)
+df_combined <- bind_rows(df_combined, q_6)
+
+df_combined <- bind_rows(df_combined, q_ie_part1_summer)
+df_combined <- bind_rows(df_combined, q_ie_part2_summer)
+df_combined <- bind_rows(df_combined, q_ie_part3_summer)
+df_combined <- bind_rows(df_combined, q_ie_part4_summer)
 
 #### subset each ####
 
@@ -677,7 +1289,7 @@ columns_to_process <- c("sex", "neurological_conditions", "neurological_conditio
 df_combined[columns_to_process] <- lapply(df_combined[columns_to_process], function(x) ifelse(x == "", NA, x))
 
 
-# fill in the stress by down
+# fill in the some variables by downup
 df_combined <- df_combined %>% 
   group_by(id) %>% 
   fill(sex, stressed, age,

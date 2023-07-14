@@ -71,17 +71,18 @@ gonogo$users <- factor(gonogo$users, levels = user_order)
 # drop missing on sex and gonogo (n = 23) / not necessary for IE paper
 #gonogo <- gonogo[complete.cases(gonogo[, c("sex", "nogo_RT")]), ]
 
+# NOTE: to delete -- extra
 # Box plot by group
-ggplot(gonogo, aes(x = users, y = dprime, fill= users)) + 
-  stat_boxplot(geom = "errorbar",
-               width = 0.25) + 
-  geom_boxplot() +
-  labs(title = "Go/No-Go", x = "")+ 
-  scale_x_discrete(labels=c(paste0("Non-User\n (n=", table(gonogo$users)["Non-users"][[1]], ")"), 
-                            paste0("Infrequent User\n (n=", table(gonogo$users)["Infrequent users"][[1]], ")"), 
-                            paste0("Frequent Users\n (n=", table(gonogo$users)["Frequent users"][[1]], ")"), 
-                            paste0("High users\n (n=", table(gonogo$users)["High users"][[1]], ")")))+ 
-  theme(legend.position = "none") 
+#ggplot(gonogo, aes(x = users, y = dprime, fill= users)) + 
+#  stat_boxplot(geom = "errorbar",
+#               width = 0.25) + 
+#  geom_boxplot() +
+#  labs(title = "Go/No-Go", x = "")+ 
+#  scale_x_discrete(labels=c(paste0("Non-User\n (n=", table(gonogo$users)["Non-users"][[1]], ")"), 
+#                            paste0("Infrequent User\n (n=", table(gonogo$users)["Infrequent users"][[1]], ")"), 
+#                            paste0("Frequent Users\n (n=", table(gonogo$users)["Frequent users"][[1]], ")"), 
+#                            paste0("High users\n (n=", table(gonogo$users)["High users"][[1]], ")")))+ 
+#  theme(legend.position = "none") 
 
 
 

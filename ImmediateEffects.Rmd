@@ -1,0 +1,96 @@
+---
+title: "Immediate Effects"
+author: "Marius 't Hart"
+date: "2023-07-13"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+old OSF:
+q8kda
+
+new OSF:
+cngw6
+
+Import code for initial steps:
+
+```{r}
+# libraries:
+library(tidyverse)
+library(ggplot2)
+library(data.table)
+
+# load helpers
+source('R/parseTaskData.R')
+source('R/data.R')
+source('R/statistics.R')
+```
+
+Download task and questionnaire data from OSF:
+
+Only need to run this once:
+
+```{r}
+getOSFdata(2020, "fall", "gonogo")
+getOSFdata(2020, "fall", "visualsearch")
+getOSFdata(2020, "fall", "nback")
+getOSFdata(2020, "fall", "trailmaking")
+
+# download questionnaire files and quality files: RUN ONCE
+getOSFdata(2020, "fall", "questionnaires")
+getOSFdata(2020, "fall", "quality")
+```
+
+Preprocess task data:
+
+```{r}
+gng_df <- getGroupPerformance(2020, "fall", "gonogo")
+vs_df <- getGroupPerformance(2020, "fall", "visualsearch")
+nback_df <- getGroupPerformance(2020, "fall", "nback")
+tm_df <- getGroupPerformance(2020, "fall", "trailmaking")
+
+```
+
+Assigning to Cannabis use-frequency groups:
+
+```{r}
+source('R/MilaR/CleaningQ1.R')
+
+# calculate use frequency
+# 7: daily
+# 6: a few times a week
+# 5: once a week
+# 4: a few times a month
+# 3: around once a month
+# 2: once or twice within these past 3 months
+# 1: not in the past 3 months
+# 0: [empty / never]
+
+q1$cannabis_freqnum <- 0
+
+freqlist <-    c('Not in the past 3 months',
+                 'Once or twice within these past 3 months',
+                 'Around once a month',
+                 'A few times a month',
+                 'Once a week',
+                 'A few times a week',
+                 'Daily')
+
+for (idx in c(1:length(freqlist))) {
+  q1$cannabis_freqnum[which(q1$cannabis_use_frequency == freqlist[idx])] <- idx
+}
+
+# calculate cannabis groups
+
+q1 <- q1 %>% mutate(cannabis_group = cannabis_freqnum,
+                    cannabis_group = case_when(cannabis_freqnum == 0 ~ "Non-users",
+                                            cannabis_freqnum > 5 ~ "Frequent users",
+                                            TRUE ~ "Infrequent users"))
+
+# 'Not in the past 3 months' / 1 should NOT be assigned to any group!!!!!!!!!!!!!!!!!
+
+```
+

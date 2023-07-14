@@ -176,7 +176,30 @@ ggplot(tn, aes(x = tasks, y = MT, fill = users)) +
 
 #### graph for poster ####
 
-p<-tn %>% group_by(users, tasks)  %>%
+bf_df_all$p.adj <- as.numeric(bf_df_all$p.adj)
+bf_df_all <- bf_df_all[bf_df_all$p.adj > 3 | bf_df_all$p.adj < 1/3, ]
+bf_df_all$p <- ifelse((bf_df_all$p.adj > 3 & bf_df_all$p.adj <= 10) | (bf_df_all$p.adj < 1/3 & bf_df_all$p.adj >= 1/10), "*", 
+                      ifelse((bf_df_all$p.adj > 10 & bf_df_all$p.adj <= 30) | (bf_df_all$p.adj < 1/10 & bf_df_all$p.adj >= 1/30), "**", "***"))
+
+## calculate positions:
+m_t <- tunneling  %>%
+  group_by(users) %>%
+  summarise_at(vars(MT_sc40, MT_sc60, MT_sc80, MT_sc100), list(name = mean), na.rm = TRUE)
+
+m_t <- data.frame(m_t)
+rownames(m_t) <- m_t$users
+m_t$users <- NULL
+names(m_t) <- c("MT_sc40", "MT_sc60", "MT_sc80", "MT_sc100")
+
+## replace groups depending on positions
+
+for (i in 1:dim(bf_df_all)[1]) {
+  bf_df_all[i, "group_2"] <- m_t[bf_df_all[i, "group1"], bf_df_all[i, "group"]]
+  bf_df_all[i, "group_1"] <- m_t[bf_df_all[i, "group2"], bf_df_all[i, "group"]]
+}
+
+
+p<- tn %>% group_by(users, tasks)  %>%
   mutate(count = n()) %>%
   group_by(users, tasks, count) %>%
   summarise_at(vars(MT), list(mean = mean, sd = sd)) %>%
@@ -207,6 +230,22 @@ p<-tn %>% group_by(users, tasks)  %>%
         plot.title = element_text(face = "bold"),
         panel.border = element_blank(),
         text = element_text(family = "Lato", size = 24),
-        panel.grid = element_blank())
+        panel.grid = element_blank())+
+  geom_segment(aes(x = 0.85, xend = 0.85, y = 4.278661, yend = 4.859155), linewidth = 0.5, color = "black") +
+  geom_segment(aes(x = 0.85, xend = 0.9, y = 4.278661, yend = 4.278661), linewidth = 0.5, color = "black") +
+  geom_segment(aes(x = 0.85, xend = 0.9, y = 4.859155, yend = 4.859155), linewidth = 0.5, color = "black") +
+  geom_text(x = 0.8, y = 4.5, label = "*", size = 3, color = "black")+
+  geom_segment(aes(x = 1.85, xend = 1.85, y = 4.202336, yend = 4.901025), linewidth = 0.5, color = "black") +
+  geom_segment(aes(x = 1.85, xend = 1.9, y = 4.202336, yend = 4.202336), linewidth = 0.5, color = "black") +
+  geom_segment(aes(x = 1.85, xend = 1.9, y = 4.901025, yend = 4.901025), linewidth = 0.5, color = "black") +
+  geom_text(x = 1.8, y = 4.55, label = "***", size = 3, color = "black")+
+  geom_segment(aes(x = 2.85, xend = 2.85, y = 4.274625, yend = 4.881067), linewidth = 0.5, color = "black") +
+  geom_segment(aes(x = 2.85, xend = 2.9, y = 4.274625, yend = 4.274625), linewidth = 0.5, color = "black") +
+  geom_segment(aes(x = 2.85, xend = 2.9, y = 4.881067, yend = 4.881067), linewidth = 0.5, color = "black") +
+  geom_text(x = 2.8, y = 4.55, label = "*", size = 3, color = "black")+
+  geom_segment(aes(x = 4.15, xend = 4.15, y = 4.350577, yend = 4.924439), linewidth = 0.5, color = "black") +
+  geom_segment(aes(x = 4.15, xend = 4.1, y = 4.350577, yend = 4.350577), linewidth = 0.5, color = "black") +
+  geom_segment(aes(x = 4.15, xend = 4.1, y = 4.924439, yend = 4.924439), linewidth = 0.5, color = "black") +
+  geom_text(x = 4.2, y = 4.6, label = "*", size = 3, color = "black")
 
 ggsave("data/output/IE_tunneling_300.svg", plot = p, width=200, height=240, units = "mm", dpi = 300)

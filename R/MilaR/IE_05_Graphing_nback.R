@@ -176,8 +176,8 @@ ggplot(nb, aes(x = tasks, y = dprime, fill = users)) +
 
 bf_df_all$p.adj <- as.numeric(bf_df_all$p.adj)
 bf_df_all <- bf_df_all[bf_df_all$p.adj > 3 | bf_df_all$p.adj < 1/3, ]
-bf_df_all$p <- ifelse((bf_df_all$p.adj > 3 & bf_df_all$p.adj <= 10) | (bf_df_all$p.adj > 1/3 & bf_df_all$p.adj <= 1/10), "*", 
-                  ifelse((bf_df_all$p.adj > 10 & bf_df_all$p.adj <= 30) | (bf_df_all$p.adj > 1/10 & bf_df_all$p.adj <= 1/30), "**", "***"))
+bf_df_all$p <- ifelse((bf_df_all$p.adj > 3 & bf_df_all$p.adj <= 10) | (bf_df_all$p.adj < 1/3 & bf_df_all$p.adj >= 1/10), "*", 
+                  ifelse((bf_df_all$p.adj > 10 & bf_df_all$p.adj <= 30) | (bf_df_all$p.adj < 1/10 & bf_df_all$p.adj >= 1/30), "**", "***"))
 
 p<-nb %>%
   group_by(users, tasks)  %>%

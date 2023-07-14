@@ -26,6 +26,7 @@ for (task in tasks) {
   print(paste0("Elapsed time for task ", task, " was: ",  as.numeric(start_time["elapsed"]), " seconds"))
 }
 
+#### Fixing Trailmaking File Naming ####
 # trailMaking didn't run in the first instance
 # some task names were TrailMaking instead of trailMaking <- changed to latter
 folder_path <- file.path('data', 'pavlovia', '2023-07', 'trailMaking')
@@ -62,6 +63,44 @@ for (task in tasks) {
   # print the elapsed time
   print(paste0("Elapsed time for task ", task, " was: ",  as.numeric(start_time["elapsed"]), " seconds"))
 }
+
+#### Fixing Mirror Tasks Files Naming ####
+folder_path <- file.path('data', 'pavlovia', '2023-07', 'mirrorgeneralizationhor')
+
+# Get the list of .csv files in the folder
+file_list <- list.files(folder_path,pattern='*.csv')
+
+# Iterate through each file and rename if necessary
+for (file_path in file_list) {
+  file_name <- basename(file_path)
+  
+  # Check if the file name contains different namings
+  if (grepl("MirrorGeneralizationHor", file_name)) {
+    new_file_name <- gsub("MirrorGeneralizationHor", "mirrorgeneralizationhor", file_name)
+    f_p <- file.path(folder_path, file_name)
+    new_file_path <- file.path(folder_path, new_file_name)
+    
+    # Rename the file
+    file.rename(f_p, new_file_path)
+  }
+}
+
+## 
+
+tasks <- c("mirrorgeneralizationhor")
+
+for (task in tasks) {
+  start_time <- system.time({
+    df <- getGroupPerformance("pavlovia", "2023-07", task)
+    assign(paste0(task, "_df"), df)
+  })
+  
+  # print the elapsed time
+  print(paste0("Elapsed time for task ", task, " was: ",  as.numeric(start_time["elapsed"]), " seconds"))
+}
+
+## combined with mirrorReversal_df
+mirrorReversal_df <- bind_rows(mirrorReversal_df, mirrorgeneralizationhor_df)
 
 
 # list of data frames

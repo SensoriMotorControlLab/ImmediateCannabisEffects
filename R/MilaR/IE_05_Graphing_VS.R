@@ -361,7 +361,7 @@ visualsearch %>%
   geom_path(aes(linetype = Present)) +
   geom_point(size=3) +
   stat_pvalue_manual(
-    data = bf_df_all, label = "BF = {p.adj}",
+    data = bf_df_all, label = "BF = {p}",
     xmin = "group_min", xmax = "group_max",
     y.position = "y", coord.flip = TRUE,
     vjust = 0
@@ -384,7 +384,15 @@ visualsearch %>%
 
 #### graph for poster ####
 
-p<-visualsearch %>%
+bf_df_all$p.adj <- as.numeric(bf_df_all$p.adj)
+bf_df_all <- bf_df_all[bf_df_all$p.adj > 3 | bf_df_all$p.adj < 1/3, ]
+bf_df_all$p <- ifelse((bf_df_all$p.adj > 3 & bf_df_all$p.adj <= 10) | (bf_df_all$p.adj < 1/3 & bf_df_all$p.adj >= 1/10), "*", 
+                      ifelse((bf_df_all$p.adj > 10 & bf_df_all$p.adj <= 30) | (bf_df_all$p.adj < 1/10 & bf_df_all$p.adj >= 1/30), "**", "***"))
+
+
+p<-
+  
+visualsearch %>%
   select(RT_6_absent:RT_18_present, users)  %>%
   pivot_longer(RT_6_absent:RT_18_present, names_to = "Group", values_to = "RT") %>%
   mutate(set_size = Group,
@@ -411,7 +419,13 @@ p<-visualsearch %>%
              shape = Present,
              color=users)) +
   geom_path(aes(linetype = Present), size = 1.5) +
-  geom_point(size=4) + 
+  geom_point(size=4) +
+  stat_pvalue_manual(
+    data = bf_df_all, label = "{p.adj}",
+    xmin = "group_min", xmax = "group_max",
+    y.position = "y", coord.flip = TRUE,
+    vjust = 0
+  )+ 
   geom_errorbar(aes(xmin=mean-se, xmax=mean+se), 
                 position=position_dodge(width=0.05),
                 width = 0.3, color = "black", size = 1) +

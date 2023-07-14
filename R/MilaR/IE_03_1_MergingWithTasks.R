@@ -854,16 +854,16 @@ df_list[[7]] <- df_list[[7]][!duplicated(df_list[[7]][c("id", "sdate")]), ]
 #  select(-startdate, -enddate)
 
 df_mirror <- merge(df_combined, df_list[[7]], by = c("id"))
-#2453
+#2798
 
 df_mirror <- df_mirror[df_mirror$date_1 >= df_mirror$startdate & df_mirror$date_1 <= df_mirror$enddate, ]
-#919
+#984
 
 df_mirror <- df_mirror[!duplicated(df_mirror[c("id", "startdate", "enddate", "date_1")], fromLast = TRUE), ]
-#919
+#984
 
 df_mirror <- df_mirror[!duplicated(df_mirror[c("id", "date_1")], fromLast = TRUE), ]
-#889
+#953
 
 
 ## wrangling 
@@ -908,7 +908,7 @@ df_mirror <- df_mirror %>%
 
 # remove those who need to wear corrective devices to see screen and not wearing them now
 df_mirror <- df_mirror[which(df_mirror$wearing_glasses_now != "No" | is.na(df_mirror$wearing_glasses_now)), ]
-#871
+#934
 
 df_mirror <- df_mirror %>% 
   select(-glasses_contacts, -wearing_glasses_now)
@@ -924,14 +924,14 @@ df_mirror <- subset(df_mirror, (neurological_conditions == "No" |
                                 neurological_condition_description == "no" |
                                 neurological_condition_description == "No" |
                                 neurological_condition_description == "none"))
-#5830
+#889
 
 df_mirror <- df_mirror %>% 
   select(-neurological_conditions, -neurological_condition_description, -neurological_condition_choice)
 
 # remove opiate users
 df_mirror <- df_mirror[which(df_mirror$opiates == "No" | is.na(df_mirror$opiates)),]
-#778
+#829
 
 ## set up users
 
@@ -980,7 +980,7 @@ df_mirror$cannabis_group <- relevel(df_mirror$cannabis_group, ref = "Non-users")
 
 df_mirror$group <- df_mirror$sample
 mirror <- df_mirror
-#778
+#829
 
 
 

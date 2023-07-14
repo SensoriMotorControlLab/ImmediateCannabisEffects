@@ -1,7 +1,6 @@
-nlines <- c(133)
+nlines <- c(143)
 
-# this function is adapted from Raphael's code and optimized by KK
-mirrorReversal <- function(filename) {
+mirrorgeneralizationhor <- function(filename) {  
   step <- 2
   
   # if the file can't be read, return empty list for now
@@ -21,10 +20,10 @@ mirrorReversal <- function(filename) {
   
   # remove empty lines:
   dt <- dt[which(!is.na(dt$trialsNum)),]
+
   
   # loop through all trials
   for (trialnum in c(1:dim(dt)[1])) {
-    #print(trialnum)
     s <- convertCellToNumVector(dt$step[trialnum])
     m <- dt$trialsType[trialnum]
     a <- dt$targetangle_deg[trialnum]
@@ -35,6 +34,9 @@ mirrorReversal <- function(filename) {
     
     # remove stuff that is not step==2
     stepidx <- which(s == step)
+    if(all(stepidx == 0)){
+      return(list())
+    }
     t <- t[stepidx]
     startt <- t[1]
     endt <- t[length(t)]
@@ -52,13 +54,19 @@ mirrorReversal <- function(filename) {
   # vectors as data frame columns:
   dtmt <- data.frame(trialno, targetangle_deg, mirror, taskno, time)
   
-  # KK: using 18 instead of 40 to match with mirror generalization
-  dtmt <- tail(subset(dtmt, taskno == 2), 18)
-  
+  dtmt <- head(subset(dtmt, taskno == 2), 20)
+
   # create named output vector
   output <- c()
-  output[['meanMT']] <- mean(dtmt$time)
-  output[['sdMT']] <- sd(dtmt$time)
+  if (nrow(dtmt) >= 3) {
+    dtmt <- dtmt[3:nrow(dtmt), ]
+    output[['meanMT']] <- mean(dtmt$time)
+    output[['sdMT']] <- sd(dtmt$time)
+  } else {
+    dtmt <- data.frame()  # Empty data frame
+    output[['meanMT']] <- NA
+    output[['sdMT']] <- NA
+  }
   
   output[['participant']]     <- p
   output[['OS']]              <- o

@@ -186,8 +186,8 @@ stat_pvalue_manual(
 
 bf_df$p.adj <- as.numeric(bf_df$p.adj)
 bf_df <- bf_df[bf_df$p.adj > 3 | bf_df$p.adj < 1/3, ]
-bf_df$p <- ifelse((bf_df$p.adj > 3 & bf_df$p.adj <= 10) | (bf_df$p.adj > 1/3 & bf_df$p.adj <= 1/10), "*", 
-                  ifelse((bf_df$p.adj > 10 & bf_df$p.adj <= 30) | (bf_df$p.adj > 1/10 & bf_df$p.adj <= 1/30), "**", "***"))
+bf_df$p <- ifelse((bf_df$p.adj > 3 & bf_df$p.adj <= 10) | (bf_df$p.adj < 1/3 & bf_df$p.adj >= 1/10), "*", 
+                  ifelse((bf_df$p.adj > 10 & bf_df$p.adj <= 30) | (bf_df$p.adj < 1/10 & bf_df$p.adj >= 1/30), "**", "***"))
 
 bf_df$users <- bf_df$group1
 

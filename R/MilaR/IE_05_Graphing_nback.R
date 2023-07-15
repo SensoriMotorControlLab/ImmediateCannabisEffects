@@ -179,7 +179,7 @@ bf_df_all <- bf_df_all[bf_df_all$p.adj > 3 | bf_df_all$p.adj < 1/3, ]
 bf_df_all$p <- ifelse((bf_df_all$p.adj > 3 & bf_df_all$p.adj <= 10) | (bf_df_all$p.adj < 1/3 & bf_df_all$p.adj >= 1/10), "*", 
                   ifelse((bf_df_all$p.adj > 10 & bf_df_all$p.adj <= 30) | (bf_df_all$p.adj < 1/10 & bf_df_all$p.adj >= 1/30), "**", "***"))
 
-p<-nb %>%
+p3<-nb %>%
   group_by(users, tasks)  %>%
     mutate(count = n()) %>%
     group_by(users, tasks, count) %>%
@@ -212,13 +212,9 @@ p<-nb %>%
         panel.border = element_blank(),
         text = element_text(family = "Lato", size = 24),
         panel.grid = element_blank()) +
-  geom_segment(aes(x = 0.85, xend = 0.85, y = 2.79, yend = 3.27), linewidth = 0.5, color = "black") +
-  geom_segment(aes(x = 0.85, xend = 0.9, y = 2.79, yend = 2.79), linewidth = 0.5, color = "black") +
-  geom_segment(aes(x = 0.85, xend = 0.9, y = 3.27, yend = 3.27), linewidth = 0.5, color = "black") +
-  geom_text(x = 0.8, y = 3, label = "***", size = 3, color = "black") +
-  geom_segment(aes(x = 0.7, xend = 0.7, y = 3.00, yend = 3.27), linewidth = 0.5, color = "black") +
-  geom_segment(aes(x = 0.7, xend = 0.75, y = 3.00, yend = 3.00), linewidth = 0.5, color = "black") +
-  geom_segment(aes(x = 0.7, xend = 0.75, y = 3.27, yend = 3.27), linewidth = 0.5, color = "black") +
-  geom_text(x = 0.65, y = 3.15, label = "*", size = 3, color = "black")
+  geom_segment(aes(x = 0.85, xend = 0.85, y = 2.78, yend = 3.19), linewidth = 0.5, color = "#f8766d") +
+  geom_segment(aes(x = 0.85, xend = 0.9, y = 2.78, yend = 2.78), linewidth = 0.5, color = "#f8766d") +
+  geom_segment(aes(x = 0.85, xend = 0.9, y = 3.19, yend = 3.19), linewidth = 0.5, color = "#f8766d") +
+  geom_text(x = 0.8, y = 2.98, label = "***", size = 5, color = "#f8766d", angle = 90) 
 
-ggsave("data/output/IE_nback_300.svg", plot = p, width=200, height=240, units = "mm", dpi = 300)
+ggsave("data/output/IE_nback_300.svg", plot = p3, width=200, height=300, units = "mm", dpi = 300)

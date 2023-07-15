@@ -191,7 +191,7 @@ bf_df$p <- ifelse((bf_df$p.adj > 3 & bf_df$p.adj <= 10) | (bf_df$p.adj < 1/3 & b
 
 bf_df$users <- bf_df$group1
 
-p<-ggplot(trailmaking, aes(x = users, y = MoveTime_1, fill = users)) + 
+p5<-ggplot(trailmaking, aes(x = users, y = MoveTime_1, fill = users)) + 
   stat_boxplot(geom = "errorbar",
                width = 0.25) + 
   geom_boxplot(outlier.shape = "") +
@@ -215,10 +215,14 @@ p<-ggplot(trailmaking, aes(x = users, y = MoveTime_1, fill = users)) +
         panel.border = element_blank(),
         text = element_text(family = "Lato", size = 24),
         panel.grid = element_blank()) +
-  stat_pvalue_manual(
-    data = bf_df, label = "{p}",
-    xmin = "group1", xmax = "group2",
-    y.position = c(120)
-  )
+  geom_segment(aes(x = 1, xend = 4, y = 120, yend = 120), linewidth = 0.3, color = "#f8766d") +
+  geom_segment(aes(x = 1, xend = 1, y = 115, yend = 120), linewidth = 0.3, color = "#f8766d") +
+  geom_segment(aes(x = 4, xend = 4, y = 115, yend = 120), linewidth = 0.3, color = "#f8766d") +
+  geom_text(x = 2.5, y = 125, label = "**", size = 5, color = "#f8766d")
+  #stat_pvalue_manual(
+  #  data = bf_df, label = "{p}",
+  #  xmin = "group1", xmax = "group2",
+  #  y.position = c(120)
+  #)
 
-ggsave("data/output/IE_trailmaking_300.svg", plot = p, width=200, height=240, units = "mm", dpi = 300)
+ggsave("data/output/IE_trailmaking_300.svg", plot = p5, width=200, height=300, units = "mm", dpi = 300)

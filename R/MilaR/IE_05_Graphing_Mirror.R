@@ -171,7 +171,7 @@ bf_df$p <- ifelse((bf_df$p.adj > 3 & bf_df$p.adj <= 10) | (bf_df$p.adj < 1/3 & b
 
 bf_df$users <- bf_df$group1
 
-p<-ggplot(mirror, aes(x = users, y = meanMT, fill = users)) + 
+p2<-ggplot(mirror, aes(x = users, y = meanMT, fill = users)) + 
   stat_boxplot(geom = "errorbar",
                width = 0.25) + 
   geom_boxplot(outlier.shape = "") +
@@ -195,10 +195,14 @@ p<-ggplot(mirror, aes(x = users, y = meanMT, fill = users)) +
         panel.border = element_blank(),
         text = element_text(family = "Lato", size = 24),
         panel.grid = element_blank()) +
-  stat_pvalue_manual(
-    data = bf_df, label = "{p}",
-    xmin = "group1", xmax = "group2",
-    y.position = c(5)
-  )
+  geom_segment(aes(x = 3, xend = 4, y = 4.7, yend = 4.7), linewidth = 0.3, color = "#679267") +
+  geom_segment(aes(x = 3, xend = 3, y = 4.5, yend = 4.7), linewidth = 0.3, color = "#679267") +
+  geom_segment(aes(x = 4, xend = 4, y = 4.5, yend = 4.7), linewidth = 0.3, color = "#679267") +
+  geom_text(x = 3.5, y = 4.8, label = "*", size = 5, color = "#679267")
+  #stat_pvalue_manual(
+  #  data = bf_df, label = "{p}",
+  #  xmin = "group1", xmax = "group2",
+  #  y.position = c(5)
+  #)
 
-ggsave("data/output/IE_mirror_300.svg", plot = p, width=200, height=240, units = "mm", dpi = 300)
+ggsave("data/output/IE_mirror_300.svg", plot = p2, width=200, height=300, units = "mm", dpi = 300)

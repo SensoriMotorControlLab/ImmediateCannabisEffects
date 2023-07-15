@@ -199,7 +199,7 @@ for (i in 1:dim(bf_df_all)[1]) {
 }
 
 
-p<- tn %>% group_by(users, tasks)  %>%
+p6<- tn %>% group_by(users, tasks)  %>%
   mutate(count = n()) %>%
   group_by(users, tasks, count) %>%
   summarise_at(vars(MT), list(mean = mean, sd = sd)) %>%
@@ -231,21 +231,21 @@ p<- tn %>% group_by(users, tasks)  %>%
         panel.border = element_blank(),
         text = element_text(family = "Lato", size = 24),
         panel.grid = element_blank())+
-  geom_segment(aes(x = 0.85, xend = 0.85, y = 4.278661, yend = 4.859155), linewidth = 0.5, color = "black") +
-  geom_segment(aes(x = 0.85, xend = 0.9, y = 4.278661, yend = 4.278661), linewidth = 0.5, color = "black") +
-  geom_segment(aes(x = 0.85, xend = 0.9, y = 4.859155, yend = 4.859155), linewidth = 0.5, color = "black") +
-  geom_text(x = 0.8, y = 4.5, label = "*", size = 3, color = "black")+
-  geom_segment(aes(x = 1.85, xend = 1.85, y = 4.202336, yend = 4.901025), linewidth = 0.5, color = "black") +
-  geom_segment(aes(x = 1.85, xend = 1.9, y = 4.202336, yend = 4.202336), linewidth = 0.5, color = "black") +
-  geom_segment(aes(x = 1.85, xend = 1.9, y = 4.901025, yend = 4.901025), linewidth = 0.5, color = "black") +
-  geom_text(x = 1.8, y = 4.55, label = "***", size = 3, color = "black")+
-  geom_segment(aes(x = 2.85, xend = 2.85, y = 4.274625, yend = 4.881067), linewidth = 0.5, color = "black") +
-  geom_segment(aes(x = 2.85, xend = 2.9, y = 4.274625, yend = 4.274625), linewidth = 0.5, color = "black") +
-  geom_segment(aes(x = 2.85, xend = 2.9, y = 4.881067, yend = 4.881067), linewidth = 0.5, color = "black") +
-  geom_text(x = 2.8, y = 4.55, label = "*", size = 3, color = "black")+
-  geom_segment(aes(x = 4.15, xend = 4.15, y = 4.350577, yend = 4.924439), linewidth = 0.5, color = "black") +
-  geom_segment(aes(x = 4.15, xend = 4.1, y = 4.350577, yend = 4.350577), linewidth = 0.5, color = "black") +
-  geom_segment(aes(x = 4.15, xend = 4.1, y = 4.924439, yend = 4.924439), linewidth = 0.5, color = "black") +
-  geom_text(x = 4.2, y = 4.6, label = "*", size = 3, color = "black")
+  geom_segment(aes(x = 0.85, xend = 0.85, y = 4.278661, yend = 4.859155), linewidth = 0.5, color = "#f8766d") +
+  geom_segment(aes(x = 0.85, xend = 0.9, y = 4.278661, yend = 4.278661), linewidth = 0.5, color = "#f8766d") +
+  geom_segment(aes(x = 0.85, xend = 0.9, y = 4.859155, yend = 4.859155), linewidth = 0.5, color = "#f8766d") +
+  geom_text(x = 0.8, y = 4.5, label = "*", size = 5, color = "#f8766d", angle = 90)+
+  geom_segment(aes(x = 1.85, xend = 1.85, y = 4.202336, yend = 4.901025), linewidth = 0.5, color = "#f8766d") +
+  geom_segment(aes(x = 1.85, xend = 1.9, y = 4.202336, yend = 4.202336), linewidth = 0.5, color = "#f8766d") +
+  geom_segment(aes(x = 1.85, xend = 1.9, y = 4.901025, yend = 4.901025), linewidth = 0.5, color = "#f8766d") +
+  geom_text(x = 1.8, y = 4.55, label = "***", size = 5, color = "#f8766d", angle = 90)+
+  geom_segment(aes(x = 2.85, xend = 2.85, y = 4.274625, yend = 4.881067), linewidth = 0.5, color = "#f8766d") +
+  geom_segment(aes(x = 2.85, xend = 2.9, y = 4.274625, yend = 4.274625), linewidth = 0.5, color = "#f8766d") +
+  geom_segment(aes(x = 2.85, xend = 2.9, y = 4.881067, yend = 4.881067), linewidth = 0.5, color = "#f8766d") +
+  geom_text(x = 2.8, y = 4.55, label = "*", size = 5, color = "#f8766d", angle = 90)+
+  geom_segment(aes(x = 4.15, xend = 4.15, y = 4.350577, yend = 4.924439), linewidth = 0.5, color = "#f8766d") +
+  geom_segment(aes(x = 4.15, xend = 4.1, y = 4.350577, yend = 4.350577), linewidth = 0.5, color = "#f8766d") +
+  geom_segment(aes(x = 4.15, xend = 4.1, y = 4.924439, yend = 4.924439), linewidth = 0.5, color = "#f8766d") +
+  geom_text(x = 4.25, y = 4.6, label = "*", size = 5, color = "#f8766d", angle = 90)
 
-ggsave("data/output/IE_tunneling_300.svg", plot = p, width=200, height=240, units = "mm", dpi = 300)
+ggsave("data/output/IE_tunneling_300.svg", plot = p6, width=200, height=300, units = "mm", dpi = 300)

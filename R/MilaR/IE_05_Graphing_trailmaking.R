@@ -218,7 +218,7 @@ p5<-ggplot(trailmaking, aes(x = users, y = MoveTime_1, fill = users)) +
   geom_segment(aes(x = 1, xend = 4, y = 120, yend = 120), linewidth = 0.3, color = "#f8766d") +
   geom_segment(aes(x = 1, xend = 1, y = 115, yend = 120), linewidth = 0.3, color = "#f8766d") +
   geom_segment(aes(x = 4, xend = 4, y = 115, yend = 120), linewidth = 0.3, color = "#f8766d") +
-  geom_text(x = 2.5, y = 125, label = "**", size = 5, color = "#f8766d")
+  geom_text(x = 2.5, y = 125, label = "**", size = 10, color = "#f8766d")
   #stat_pvalue_manual(
   #  data = bf_df, label = "{p}",
   #  xmin = "group1", xmax = "group2",

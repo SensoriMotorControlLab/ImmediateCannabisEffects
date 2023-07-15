@@ -197,13 +197,41 @@ tbl_6_3 <-
               digits = list(all_continuous() ~ 3)) %>%
   modify_caption("Table 1. Descriptive Statistics") 
 
+
+## add mirror (July 2023)
+tbl_7 <-
+  tbl_summary(data = mirror, by = users, percent = "column",
+              include = c(meanMT),
+              type = list(meanMT ~ 'continuous'),
+              statistic = list(all_continuous() ~ "{mean} ({sd})"),
+              digits = list(all_continuous() ~ 3)) %>%
+  modify_caption("Table 1. Descriptive Statistics") 
+
+tbl_7_2 <-
+  tbl_summary(data = mirror_subset, by = group, percent = "column",
+              include = c(meanMT),
+              type = list(meanMT ~ 'continuous'),
+              statistic = list(all_continuous() ~ "{mean} ({sd})"),
+              digits = list(all_continuous() ~ 3)) %>%
+  modify_caption("Table 1. Descriptive Statistics") 
+
+tbl_7_3 <-
+  tbl_summary(data = matched_mirror, by = group, percent = "column",
+              include = c(meanMT),
+              type = list(meanMT ~ 'continuous'),
+              statistic = list(all_continuous() ~ "{mean} ({sd})"),
+              digits = list(all_continuous() ~ 3)) %>%
+  modify_caption("Table 1. Descriptive Statistics") 
+
+
 tbl_combined <- tbl_merge(
     tbls = list(tbl_1, tbl_1_2, tbl_1_3,
                 tbl_2, tbl_2_2, tbl_2_3,
                 tbl_3, tbl_3_2, tbl_3_3,
                 tbl_4, tbl_4_2, tbl_4_3,
                 tbl_5, tbl_5_2, tbl_5_3,
-                tbl_6, tbl_6_2, tbl_6_3)
+                tbl_6, tbl_6_2, tbl_6_3,
+                tbl_7, tbl_7_2, tbl_7_3)
   ) %>%
   as_flex_table()
 

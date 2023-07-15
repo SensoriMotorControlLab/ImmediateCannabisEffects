@@ -32,8 +32,13 @@ nback$video_games <- factor(nback$video_games , labels = c("Yes", "No"))
 nback$task <- "nback"
 nback_dt <- data.table(nback)
 
+mirror$sex <- factor(mirror$sex , labels = c("Female", "Male"))
+mirror$video_games <- factor(mirror$video_games , labels = c("Yes", "No"))
+mirror$task <- "mirror"
+mirror_dt <- data.table(mirror)
+
 combined_df <- rbindlist(list(gonogo_dt, visualsearch_dt, taskswitching_dt, 
-                              trailmaking_dt, tunneling_dt, nback_dt), fill = TRUE)
+                              trailmaking_dt, tunneling_dt, nback_dt, mirror_dt), fill = TRUE)
 combined_df <- data.frame(combined_df)
 combined_df <- combined_df[!duplicated(combined_df[c("id", "sex", "age", "users")]), ]
 

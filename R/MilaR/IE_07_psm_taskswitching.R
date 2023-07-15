@@ -98,10 +98,10 @@ ggplot(ts, aes(x = tasks, y = RT, fill = group)) +
 # Create a binary treatment variable for "High users"
 taskswitching$treatment <- ifelse((taskswitching$users == "High users"), 1, ifelse((taskswitching$users != "Infrequent users") & (taskswitching$users != "Frequent users"), 0, NA))
 
-taskswitching_ps <- taskswitching[!is.na(taskswitching$treatment) & !is.na(taskswitching$sex), ]
+taskswitching_ps <- taskswitching[!is.na(taskswitching$treatment) & !is.na(taskswitching$sex) & !is.na(taskswitching$age), ]
 
 # Fit a propensity score model
-psm_model <- glm(treatment ~ as.factor(sex) + physically_activity + stressed + video_games + age, 
+psm_model <- glm(treatment ~ as.factor(sex) + age, 
                  data = taskswitching_ps, family = binomial())
 
 # Compute propensity scores

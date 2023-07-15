@@ -138,10 +138,10 @@ vs %>%
 # Create a binary treatment variable for "High users"
 visualsearch$treatment <- ifelse((visualsearch$users == "High users"), 1, ifelse((visualsearch$users != "Infrequent users") & (visualsearch$users != "Frequent users"), 0, NA))
 
-visualsearch_ps <- visualsearch[!is.na(visualsearch$treatment) & !is.na(visualsearch$sex), ]
+visualsearch_ps <- visualsearch[!is.na(visualsearch$treatment) & !is.na(visualsearch$sex) & !is.na(visualsearch$age), ]
 
 # Fit a propensity score model
-psm_model <- glm(treatment ~ as.factor(sex) + physically_activity + stressed + video_games + age, 
+psm_model <- glm(treatment ~ as.factor(sex) + age, 
                  data = visualsearch_ps, family = binomial())
 
 # Compute propensity scores

@@ -254,7 +254,7 @@ p1<-ggplot(gonogo, aes(x = users, y = dprime, fill = users)) +
   geom_segment(aes(x = 3, xend = 4, y = 6.2, yend = 6.2), linewidth = 0.3, color = "#679267") +
   geom_segment(aes(x = 3, xend = 3, y = 6, yend = 6.2), linewidth = 0.3, color = "#679267") +
   geom_segment(aes(x = 4, xend = 4, y = 6, yend = 6.2), linewidth = 0.3, color = "#679267") +
-  geom_text(x = 3.5, y = 6.3, label = "***", size = 5, color = "#679267")
+  geom_text(x = 3.5, y = 6.3, label = "***", size = 10, color = "#679267")
   #stat_pvalue_manual(
   #  data = bf_df, label = "{p}",
   #  xmin = "group1", xmax = "group2",

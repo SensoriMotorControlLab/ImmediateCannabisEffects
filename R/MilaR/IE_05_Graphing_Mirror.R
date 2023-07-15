@@ -198,7 +198,7 @@ p2<-ggplot(mirror, aes(x = users, y = meanMT, fill = users)) +
   geom_segment(aes(x = 3, xend = 4, y = 4.7, yend = 4.7), linewidth = 0.3, color = "#679267") +
   geom_segment(aes(x = 3, xend = 3, y = 4.5, yend = 4.7), linewidth = 0.3, color = "#679267") +
   geom_segment(aes(x = 4, xend = 4, y = 4.5, yend = 4.7), linewidth = 0.3, color = "#679267") +
-  geom_text(x = 3.5, y = 4.8, label = "*", size = 5, color = "#679267")
+  geom_text(x = 3.5, y = 4.8, label = "*", size = 10, color = "#679267")
   #stat_pvalue_manual(
   #  data = bf_df, label = "{p}",
   #  xmin = "group1", xmax = "group2",

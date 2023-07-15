@@ -68,10 +68,10 @@ ggplot(trailmaking_subset, aes(x = group, y = MoveTime_1)) +
 # Create a binary treatment variable for "High users"
 trailmaking$treatment <- ifelse((trailmaking$users == "High users"), 1, ifelse((trailmaking$users != "Infrequent users") & (trailmaking$users != "Frequent users"), 0, NA))
 
-trailmaking_ps <- trailmaking[!is.na(trailmaking$treatment) & !is.na(trailmaking$sex), ]
+trailmaking_ps <- trailmaking[!is.na(trailmaking$treatment) & !is.na(trailmaking$sex) & !is.na(trailmaking$age), ]
 
 # Fit a propensity score model
-psm_model <- glm(treatment ~ as.factor(sex) + physically_activity + stressed + video_games + age, 
+psm_model <- glm(treatment ~ as.factor(sex) + age, 
                  data = trailmaking_ps, family = binomial())
 
 # Compute propensity scores

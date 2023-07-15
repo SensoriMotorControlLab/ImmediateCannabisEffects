@@ -100,10 +100,10 @@ ggplot(nb, aes(x = tasks, y = dprime, fill = group)) +
 # Create a binary treatment variable for "High users"
 nback$treatment <- ifelse((nback$users == "High users"), 1, ifelse((nback$users != "Infrequent users") & (nback$users != "Frequent users"), 0, NA))
 
-nback_ps <- nback[!is.na(nback$treatment) & !is.na(nback$sex), ]
+nback_ps <- nback[!is.na(nback$treatment) & !is.na(nback$sex) & !is.na(nback$age), ]
 
 # Fit a propensity score model
-psm_model <- glm(treatment ~ as.factor(sex) + physically_activity + stressed + video_games + age, 
+psm_model <- glm(treatment ~ as.factor(sex) + age, 
                  data = nback_ps, family = binomial())
 
 # Compute propensity scores

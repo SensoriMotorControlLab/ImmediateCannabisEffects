@@ -468,71 +468,71 @@ p7<- visualsearch %>%
   geom_segment(aes(y = 0.875, yend = 0.875, x = 2.07, xend = 2.20), linewidth = 0.5, color = "#7caeff") +
   geom_segment(aes(y = 0.875, yend = 0.9, x = 2.07, xend = 2.07), linewidth = 0.5, color = "#7caeff") +
   geom_segment(aes(y = 0.875, yend = 0.9, x = 2.20, xend = 2.20), linewidth = 0.5, color = "#7caeff") +
-  geom_text(y = 0.85, x = 2.13, label = "*", size = 5, color = "#7caeff")+
+  geom_text(y = 0.88, x = 2.235, label = "*", size = 10, color = "#7caeff")+
   geom_segment(aes(y = 0.8, yend = 0.8, x = 2.10, xend = 2.20), linewidth = 0.5, color = "#f8766d") +
   geom_segment(aes(y = 0.8, yend = 0.825, x = 2.10, xend = 2.10), linewidth = 0.5, color = "#f8766d") +
   geom_segment(aes(y = 0.8, yend = 0.825, x = 2.20, xend = 2.20), linewidth = 0.5, color = "#f8766d") +
-  geom_text(y = 0.775, x = 2.15, label = "*", size = 5, color = "#f8766d")+
+  geom_text(y = 0.81, x = 2.235, label = "*", size = 10, color = "#f8766d")+
   geom_segment(aes(y = 0.725, yend = 0.725, x = 2.15, xend = 2.20), linewidth = 0.5, color = "#679267") +
   geom_segment(aes(y = 0.725, yend = 0.75, x = 2.15, xend = 2.15), linewidth = 0.5, color = "#679267") +
   geom_segment(aes(y = 0.725, yend = 0.75, x = 2.20, xend = 2.20), linewidth = 0.5, color = "#679267") +
-  geom_text(y = 0.7, x = 2.175, label = "*", size = 5, color = "#679267")+
+  geom_text(y = 0.73, x = 2.235, label = "*", size = 10, color = "#679267")+
   geom_segment(aes(y = 0.875, yend = 0.875, x = 1.60, xend = 1.66), linewidth = 0.5, color = "#679267") +
   geom_segment(aes(y = 0.875, yend = 0.9, x = 1.60, xend = 1.60), linewidth = 0.5, color = "#679267") +
   geom_segment(aes(y = 0.875, yend = 0.9, x = 1.66, xend = 1.66), linewidth = 0.5, color = "#679267") +
-  geom_text(y = 0.85, x = 1.63, label = "*", size = 5, color = "#679267")+
+  geom_text(y = 0.88, x = 1.685, label = "*", size = 10, color = "#679267")+
   geom_segment(aes(y = 0.8, yend = 0.8, x = 1.60, xend = 1.55), linewidth = 0.5, color = "#7caeff") +
   geom_segment(aes(y = 0.8, yend = 0.825, x = 1.60, xend = 1.60), linewidth = 0.5, color = "#7caeff") +
   geom_segment(aes(y = 0.8, yend = 0.825, x = 1.55, xend = 1.55), linewidth = 0.5, color = "#7caeff") +
-  geom_text(y = 0.775, x = 1.575, label = "*", size = 5, color = "#7caeff")+
+  geom_text(y = 0.81, x = 1.635, label = "*", size = 10, color = "#7caeff")+
   geom_segment(aes(y = 0.725, yend = 0.725, x = 1.60, xend = 1.62), linewidth = 0.5, color = "#f8766d") +
   geom_segment(aes(y = 0.725, yend = 0.75, x = 1.60, xend = 1.60), linewidth = 0.5, color = "#f8766d") +
   geom_segment(aes(y = 0.725, yend = 0.75, x = 1.62, xend = 1.62), linewidth = 0.5, color = "#f8766d") +
-  geom_text(y = 0.7, x = 1.61, label = "*", size = 5, color = "#f8766d")+
+  geom_text(y = 0.73, x = 1.655, label = "*", size = 10, color = "#f8766d")+
   geom_segment(aes(y = 1.875, yend = 1.875, x = 3.38, xend = 3.53), linewidth = 0.5, color = "#679267") +
   geom_segment(aes(y = 1.875, yend = 1.9, x = 3.38, xend = 3.38), linewidth = 0.5, color = "#679267") +
   geom_segment(aes(y = 1.875, yend = 1.9, x = 3.53, xend = 3.53), linewidth = 0.5, color = "#679267") +
-  geom_text(y = 1.85, x = 3.46, label = "*", size = 5, color = "#679267")+
+  geom_text(y = 1.825, x = 3.46, label = "*", size = 10, color = "#679267")+
   geom_segment(aes(y = 1.8, yend = 1.8, x = 3.38, xend = 3.45), linewidth = 0.5, color = "#7caeff") +
   geom_segment(aes(y = 1.8, yend = 1.825, x = 3.38, xend = 3.38), linewidth = 0.5, color = "#7caeff") +
   geom_segment(aes(y = 1.8, yend = 1.825, x = 3.45, xend = 3.45), linewidth = 0.5, color = "#7caeff") +
-  geom_text(y = 1.775, x = 3.415, label = "*", size = 5, color = "#7caeff")+
+  geom_text(y = 1.75, x = 3.415, label = "*", size = 10, color = "#7caeff")+
   geom_segment(aes(y = 1.725, yend = 1.725, x = 3.38, xend = 3.39), linewidth = 0.5, color = "#f8766d") +
   geom_segment(aes(y = 1.725, yend = 1.75, x = 3.38, xend = 3.38), linewidth = 0.5, color = "#f8766d") +
   geom_segment(aes(y = 1.725, yend = 1.75, x = 3.39, xend = 3.39), linewidth = 0.5, color = "#f8766d") +
-  geom_text(y = 1.7, x = 3.385, label = "*", size = 5, color = "#f8766d")+
+  geom_text(y = 1.675, x = 3.385, label = "*", size = 10, color = "#f8766d")+
   geom_segment(aes(y = 1.875, yend = 1.875, x = 2.37, xend = 2.45), linewidth = 0.5, color = "#7caeff") +
   geom_segment(aes(y = 1.875, yend = 1.9, x = 2.37, xend = 2.37), linewidth = 0.5, color = "#7caeff") +
   geom_segment(aes(y = 1.875, yend = 1.9, x = 2.45, xend = 2.45), linewidth = 0.5, color = "#7caeff") +
-  geom_text(y = 1.85, x = 2.385, label = "*", size = 5, color = "#7caeff")+
+  geom_text(y = 1.825, x = 2.485, label = "*", size = 10, color = "#7caeff")+
   geom_segment(aes(y = 1.8, yend = 1.8, x = 2.37, xend = 2.43), linewidth = 0.5, color = "#f8766d") +
   geom_segment(aes(y = 1.8, yend = 1.825, x = 2.37, xend = 2.37), linewidth = 0.5, color = "#f8766d") +
   geom_segment(aes(y = 1.8, yend = 1.825, x = 2.43, xend = 2.43), linewidth = 0.5, color = "#f8766d") +
-  geom_text(y = 1.775, x = 2.4, label = "*", size = 5, color = "#f8766d")+
+  geom_text(y = 1.75, x = 2.43, label = "*", size = 10, color = "#f8766d")+
   geom_segment(aes(y = 3.125, yend = 3.125, x = 4.46, xend = 4.76), linewidth = 0.5, color = "#679267") +
   geom_segment(aes(y = 3.125, yend = 3.1, x = 4.46, xend = 4.46), linewidth = 0.5, color = "#679267") +
   geom_segment(aes(y = 3.125, yend = 3.1, x = 4.76, xend = 4.76), linewidth = 0.5, color = "#679267") +
-  geom_text(y = 3.15, x = 4.61, label = "*", size = 5, color = "#679267")+
+  geom_text(y = 3.175, x = 4.61, label = "*", size = 10, color = "#679267")+
   geom_segment(aes(y = 3.2, yend = 3.2, x = 4.46, xend = 4.58), linewidth = 0.5, color = "#7caeff") +
   geom_segment(aes(y = 3.2, yend = 3.175, x = 4.46, xend = 4.46), linewidth = 0.5, color = "#7caeff") +
   geom_segment(aes(y = 3.2, yend = 3.175, x = 4.58, xend = 4.58), linewidth = 0.5, color = "#7caeff") +
-  geom_text(y = 3.225, x = 4.52, label = "*", size = 5, color = "#7caeff")+
+  geom_text(y = 3.25, x = 4.52, label = "*", size = 10, color = "#7caeff")+
   geom_segment(aes(y = 3.275, yend = 3.275, x = 4.46, xend = 4.48), linewidth = 0.5, color = "#f8766d") +
   geom_segment(aes(y = 3.275, yend = 3.25, x = 4.46, xend = 4.46), linewidth = 0.5, color = "#f8766d") +
   geom_segment(aes(y = 3.275, yend = 3.25, x = 4.48, xend = 4.48), linewidth = 0.5, color = "#f8766d") +
-  geom_text(y = 3.3, x = 4.47, label = "*", size = 5, color = "#f8766d")+
+  geom_text(y = 3.325, x = 4.47, label = "*", size = 10, color = "#f8766d")+
   geom_segment(aes(y = 3.125, yend = 3.125, x = 3.16, xend = 3.33), linewidth = 0.5, color = "#679267") +
   geom_segment(aes(y = 3.125, yend = 3.1, x = 3.16, xend = 3.16), linewidth = 0.5, color = "#679267") +
   geom_segment(aes(y = 3.125, yend = 3.1, x = 3.33, xend = 3.33), linewidth = 0.5, color = "#679267") +
-  geom_text(y = 3.15, x = 3.245, label = "*", size = 5, color = "#679267")+
+  geom_text(y = 3.175, x = 3.245, label = "*", size = 10, color = "#679267")+
   geom_segment(aes(y = 3.2, yend = 3.2, x = 3.16, xend = 3.20), linewidth = 0.5, color = "#f8766d") +
   geom_segment(aes(y = 3.2, yend = 3.175, x = 3.16, xend = 3.16), linewidth = 0.5, color = "#f8766d") +
   geom_segment(aes(y = 3.2, yend = 3.175, x = 3.20, xend = 3.20), linewidth = 0.5, color = "#f8766d") +
-  geom_text(y = 3.225, x = 3.18, label = "*", size = 5, color = "#f8766d")+
+  geom_text(y = 3.25, x = 3.18, label = "*", size = 10, color = "#f8766d")+
   geom_segment(aes(y = 3.275, yend = 3.275, x = 3.16, xend = 3.17), linewidth = 0.5, color = "#7caeff") +
   geom_segment(aes(y = 3.275, yend = 3.25, x = 3.16, xend = 3.16), linewidth = 0.5, color = "#7caeff") +
   geom_segment(aes(y = 3.275, yend = 3.25, x = 3.17, xend = 3.17), linewidth = 0.5, color = "#7caeff") +
-  geom_text(y = 3.3, x = 3.165, label = "*", size = 5, color = "#7caeff")
+  geom_text(y = 3.325, x = 3.165, label = "*", size = 10, color = "#7caeff")
 
   
 

@@ -117,10 +117,10 @@ ggplot(tn, aes(x = tasks, y = MT, fill = group)) +
 # Create a binary treatment variable for "High users"
 tunneling$treatment <- ifelse((tunneling$users == "High users"), 1, ifelse((tunneling$users != "Infrequent users") & (tunneling$users != "Frequent users"), 0, NA))
 
-tunneling_ps <- tunneling[!is.na(tunneling$treatment) & !is.na(tunneling$sex), ]
+tunneling_ps <- tunneling[!is.na(tunneling$treatment) & !is.na(tunneling$sex) & !is.na(tunneling$sex), ]
 
 # Fit a propensity score model
-psm_model <- glm(treatment ~ as.factor(sex) + physically_activity + stressed + video_games + age, 
+psm_model <- glm(treatment ~ as.factor(sex) + age, 
                  data = tunneling_ps, family = binomial())
 
 # Compute propensity scores
@@ -177,8 +177,6 @@ bf_df_all$group <- bf_df_all$group1
 
 
 
-#### calculate ANOVA bf ####
-
 tn <- matched_tunneling %>%
   select(id, MT_sc40, MT_sc60, MT_sc80, MT_sc100, group)  %>%
   pivot_longer(cols = starts_with("MT_"), names_to = "Group", values_to = "MT") %>%
@@ -193,12 +191,6 @@ tn <- matched_tunneling %>%
 tn$id <- as.factor(tn$id)
 
 options(scipen = 999)
-
-model_tn <- anovaBF(formula = MT ~ group*tasks, data = tn, rscaleFixed = "wide")
-
-extractBF(model_tn)
-
-r2_bayes(model_tn)
 
 #### plot ####
 

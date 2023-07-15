@@ -215,6 +215,6 @@ p3<-nb %>%
   geom_segment(aes(x = 0.85, xend = 0.85, y = 2.78, yend = 3.19), linewidth = 0.5, color = "#f8766d") +
   geom_segment(aes(x = 0.85, xend = 0.9, y = 2.78, yend = 2.78), linewidth = 0.5, color = "#f8766d") +
   geom_segment(aes(x = 0.85, xend = 0.9, y = 3.19, yend = 3.19), linewidth = 0.5, color = "#f8766d") +
-  geom_text(x = 0.8, y = 2.98, label = "***", size = 5, color = "#f8766d", angle = 90) 
+  geom_text(x = 0.8, y = 2.98, label = "***", size = 10, color = "#f8766d", angle = 90) 
 
 ggsave("data/output/IE_nback_300.svg", plot = p3, width=200, height=300, units = "mm", dpi = 300)

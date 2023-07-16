@@ -1,30 +1,3 @@
-library(ggplot2)
-library(dplyr)
-
-library(rlang)
-
-library(srvyr)
-
-library(gtsummary)
-
-library(stargazer)
-library(tibble)
-
-library(jtools)
-library(broom.mixed)
-
-library(ggpubr)
-#library(ggstatsplot)
-
-library(BayesFactor)
-
-library(ggrepel)
-
-library(reshape2)
-
-library(performance)
-library(tidyr)
-
 #### nback ####
 
 ## filter those that didn't pass the screening (n = 103, removed)

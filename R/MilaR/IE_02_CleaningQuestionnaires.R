@@ -1,7 +1,3 @@
-library(dplyr)
-library(tidyr)
-library(lubridate)
-
 #### create data ####
 
 # in each questionnaire downloaded from qualtrics remove 1st and 3rd line -- to keep only one line of column names

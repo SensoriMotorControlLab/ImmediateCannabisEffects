@@ -1,5 +1,3 @@
-library(gtsummary)
-
 #### prepare descriptive table ####
 
 tbl_1 <-

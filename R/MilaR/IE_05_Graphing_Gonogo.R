@@ -1,35 +1,3 @@
-library(ggplot2)
-library(survey)
-library(flextable)
-library(dplyr)
-
-library(rlang)
-
-library(srvyr)
-
-library(gtsummary)
-
-library(stargazer)
-library(tibble)
-
-library(jtools)
-library(broom.mixed)
-
-library(ggpubr)
-#library(ggstatsplot)
-
-library(BayesFactor)
-
-library(ggrepel)
-
-library(reshape2)
-
-library(performance)
-
-library(bayestestR)
-
-library(extrafont)
-
 font_import(pattern = "Lato")
 
 loadfonts()

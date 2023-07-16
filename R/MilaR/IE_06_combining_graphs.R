@@ -1,5 +1,4 @@
 #### patchworking ####
-library(patchwork)
 
 plot_total <- ((p3 / p6) | (p2 / p1 / p5) | (p4 / p7))+ 
   plot_annotation(tag_levels = "A")

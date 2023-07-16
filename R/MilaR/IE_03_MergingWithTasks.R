@@ -1,6 +1,3 @@
-library(data.table)
-library(stringr)
-
 #### merge questionnaire with tasks ####
 
 #### gonogo ####

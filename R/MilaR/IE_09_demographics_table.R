@@ -1,5 +1,3 @@
-library(gtsummary)
-
 #### prepare descriptive table ####
 
 gonogo$sex <- factor(gonogo$sex , labels = c("Female", "Male"))

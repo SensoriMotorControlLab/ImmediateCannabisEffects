@@ -1,5 +1,3 @@
-library(MatchIt)
-
 #### matching by sober/high id ####
 
 # Subset the data frame where users == "High users"

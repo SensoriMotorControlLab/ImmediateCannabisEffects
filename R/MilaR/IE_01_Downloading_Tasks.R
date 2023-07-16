@@ -1,17 +1,3 @@
-library(tidyverse)
-library(ggplot2)
-library(dplyr)
-library(lubridate)
-library(data.table)
-library(lubridate)
-
-# load helpers
-source('R/parseTaskData.R')
-source('R/data.R')
-source('R/statistics.R')
-
-source('R/MilaR/helper.R')
-
 #### Cleaning the tasks data, Loading to dataframes ####
 
 tasks <- c("gonogo", "visualsearch", "taskswitching", "tunneling", "nBack", "mirrorReversal")

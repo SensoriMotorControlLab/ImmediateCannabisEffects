@@ -874,7 +874,7 @@ df_mirror$informed_consent <- ifelse(is.na(df_mirror$informed_consent), df_mirro
 
 # keep those who agreed to participate
 df_mirror <- df_mirror[which(df_mirror$informed_consent == 'I agree to participate in this study'),]
-#889
+#953
 
 df_mirror <- df_mirror %>% 
   select(-informed_consent2)

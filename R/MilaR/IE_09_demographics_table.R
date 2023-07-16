@@ -50,9 +50,10 @@ combined_df %>%
 tbl_1 <- tbl_summary(data = combined_df, by = users, percent = "column",
             include = c(age, sex),
             type = list(age ~ 'continuous'),
-            statistic = list(all_continuous() ~ "{mean} ({sd})"),
+            statistic = list(all_continuous() ~ "{mean} ({sd}) [{min}, {max}]"),
             digits = list(all_continuous() ~ 3,
-                          all_categorical() ~ 0)) %>%
+                          all_categorical() ~ 0),
+    missing_text = "(Missing)") %>%
   add_overall() %>%
   modify_caption("Table 1. Descriptive Statistics") %>%
   as_flex_table()
